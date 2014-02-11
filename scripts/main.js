@@ -41,9 +41,15 @@ function ( Backbone, App, Tickets, ticketTemplate, ticketsView ) {
                 itemView: SingleLink
             });
             App.tickCollection = new CollectionView({
-                collection: collection,
-                el: 'body'
-            }).render();
+                collection: collection
+//                el: 'body'
+            });
+            App.layout.content.show(App.tickCollection);
+//            App.layout.render();
+//            App.tickCollection = new CollectionView({
+//                collection: collection,
+//                el: 'body'
+//            }).render();
         },
         error : function (params) {
             console.log ('error ' +params);
