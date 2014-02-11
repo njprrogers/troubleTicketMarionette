@@ -75,7 +75,6 @@ module.exports = function (grunt) {
         },
 
 
-
         // open app and test page
 //        open: {
 //            server: {
@@ -102,7 +101,24 @@ module.exports = function (grunt) {
             ]
         },
 
-        
+        // compass
+        compass: {
+            options: {
+                sassDir: 'styles',
+                cssDir: '.tmp/styles',
+                imagesDir: 'images',
+                javascriptsDir: 'scripts',
+                fontsDir: 'styles/fonts',
+                importPath: 'bower_components',
+                relativeAssets: true
+            },
+            dist: {},
+            server: {
+                options: {
+                    debugInfo: true
+                }
+            }
+        },
 
         // require
         requirejs: {
@@ -233,6 +249,9 @@ module.exports = function (grunt) {
         }
     });
 
+    grunt.loadNpmTasks('grunt-contrib-compass');
+    grunt.loadNpmTasks('grunt-contrib-watch');
+
     grunt.registerTask('createDefaultTemplate', function () {
         grunt.file.write('.tmp/scripts/templates.js', 'this.JST = this.JST || {};');
     });
@@ -249,7 +268,7 @@ module.exports = function (grunt) {
 
         grunt.task.run([
             'clean:server',
-            
+            'compass:server',
             'connect:testserver',
             
             'exec',
