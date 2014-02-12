@@ -9,10 +9,9 @@
 		function( Ticket ) {
 
 			describe('Ticket Model', function () {
-
 				it('should be an instance of Ticket Model', function () {
-					var Ticket = new Ticket();
-					expect( Ticket ).to.be.an.instanceof( Ticket );
+					var oTicket = new Ticket();
+					expect( oTicket ).to.be.an.instanceof( Ticket );
 				});
 
 				it('should have more test written', function(){
