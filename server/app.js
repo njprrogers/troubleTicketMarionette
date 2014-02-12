@@ -56,13 +56,6 @@ db.once('open', function callback () {
 	  res.sendfile( path.join( __dirname, '../app/index.html' ) );
 	});
 
-    app.get('/troubleticketapi/api/v1/tickets/', function(req, res){
-        console.log('Tickets');
-
-
-
-    });
-
     // start server
 	http.createServer(app).listen(app.get('port'), function(){
 	    console.log('Express App started!');

@@ -109,6 +109,13 @@ module.exports = function (grunt) {
             }
         },
 
+        // open app and test page
+        open: {
+            server: {
+                path: 'http://localhost:<%= express.options.port %>'
+            }
+        },
+
         clean: {
             dist: ['.tmp', '<%= yeoman.dist %>/*'],
             server: '.tmp'
@@ -296,7 +303,6 @@ module.exports = function (grunt) {
             'connect:testserver',
             'express:dev',
             'exec',
-            'open',
             'watch'
         ]);
     });
