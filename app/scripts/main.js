@@ -25,7 +25,6 @@ function ( Backbone, App, Tickets, ticketTemplate, ticketsView ) {
     tickets.fetch({
         success : function (collection, response) {
             console.log ('success ' +collection+response);
-            debugger;
 
 //            ticketsView = new ticketsView();
 //            ticketsView.render();

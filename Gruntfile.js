@@ -36,7 +36,7 @@ module.exports = function (grunt) {
             },
 
             express: {
-                files:  [ '<%= yeoman.app %>/*.{js,json}' ],
+                files:  [ '<%= yeoman.server %>/*.{js,json}' ],
                 tasks:  [ 'express:dev' ],
                 options: {
                     spawn: false // Without this option specified express won't be reloaded
