@@ -1,5 +1,5 @@
 require.config({
-    baseUrl: '../scripts',
+    baseUrl: '../app/scripts',
     urlArgs: 'cb=' + Math.random(),
 
     deps: ['backbone.marionette'],

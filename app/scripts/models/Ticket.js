@@ -12,7 +12,7 @@ function( Backbone ) {
 
 		defaults: {},
 
-        urlRoot : 'http://localhost:8000/troubleticketapi/api/v1/tickets/'
+        urlRoot : 'http://localhost:9000/troubleticketapi/api/v1/tickets/'
 
     });
 });

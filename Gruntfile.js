@@ -19,8 +19,9 @@ module.exports = function (grunt) {
 
     // configurable paths
     var yeomanConfig = {
-        app: '',
-        dist: 'dist'
+        app: 'app',
+        dist: 'dist',
+        server: 'server'
     };
 
     grunt.initConfig({
@@ -34,11 +35,22 @@ module.exports = function (grunt) {
                 tasks: ['compass']
             },
 
+            express: {
+                files:  [ '<%= yeoman.app %>/*.{js,json}' ],
+                tasks:  [ 'express:dev' ],
+                options: {
+                    spawn: false // Without this option specified express won't be reloaded
+                }
+            },
+
             livereload: {
                 files: [
 
-                    'scripts/{,**/}*.js',
-                    'templates/{,**/}*.hbs',
+                    '<%= yeoman.app %>/*.html',
+                    '{.tmp,<%= yeoman.app %>}/styles/{,**/}*.css',
+                    '{.tmp,<%= yeoman.app %>}/scripts/{,**/}*.js',
+                    '{.tmp,<%= yeoman.app %>}/templates/{,**/}*.hbs',
+                    '<%= yeoman.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp}',
 
                     'test/spec/{,**/}*.js'
                 ],
@@ -74,13 +86,28 @@ module.exports = function (grunt) {
             }
         },
 
-
-        // open app and test page
-//        open: {
-//            server: {
-//                path: 'http://localhost:<%= connect.testserver.options.port %>'
-//            }
-//        },
+        // express app
+        express: {
+            options: {
+                // Override defaults here
+                port: '9000'
+            },
+            dev: {
+                options: {
+                    script: 'server/app.js'
+                }
+            },
+            prod: {
+                options: {
+                    script: 'server/app.js'
+                }
+            },
+            test: {
+                options: {
+                    script: 'server/app.js'
+                }
+            }
+        },
 
         clean: {
             dist: ['.tmp', '<%= yeoman.dist %>/*'],
@@ -104,12 +131,12 @@ module.exports = function (grunt) {
         // compass
         compass: {
             options: {
-                sassDir: 'styles',
+                sassDir: '<%= yeoman.app %>/styles',
                 cssDir: '.tmp/styles',
-                imagesDir: 'images',
-                javascriptsDir: 'scripts',
-                fontsDir: 'styles/fonts',
-                importPath: 'bower_components',
+                imagesDir: '<%= yeoman.app %>/images',
+                javascriptsDir: '<%= yeoman.app %>/scripts',
+                fontsDir: '<%= yeoman.app %>/styles/fonts',
+                importPath: 'app/bower_components',
                 relativeAssets: true
             },
             dist: {},
@@ -249,9 +276,6 @@ module.exports = function (grunt) {
         }
     });
 
-    grunt.loadNpmTasks('grunt-contrib-compass');
-    grunt.loadNpmTasks('grunt-contrib-watch');
-
     grunt.registerTask('createDefaultTemplate', function () {
         grunt.file.write('.tmp/scripts/templates.js', 'this.JST = this.JST || {};');
     });
@@ -270,7 +294,7 @@ module.exports = function (grunt) {
             'clean:server',
             'compass:server',
             'connect:testserver',
-            
+            'express:dev',
             'exec',
             'open',
             'watch'

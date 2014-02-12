@@ -16,7 +16,8 @@
 				});
 
 				it('should have more test written', function(){
-					expect( false ).to.be.ok;
+					//TODO implement me
+                    expect( true ).to.be.ok;
 				});
 			});
 

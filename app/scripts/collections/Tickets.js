@@ -13,7 +13,7 @@ function( Backbone, Ticket ) {
 
 		model: Ticket,
 
-        url : 'http://localhost:8000/troubleticketapi/api/v1/tickets?_dc=1392117106796&sourceApplication=cqm&imsi=100000000000001'
-		
+        url : 'http://localhost:9000/troubleticketapi/api/v1/tickets?_dc=1392117106796&sourceApplication=cqm&imsi=100000000000001'
+
 	});
 });
