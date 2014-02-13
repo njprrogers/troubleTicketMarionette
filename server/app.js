@@ -11,25 +11,6 @@ var mongoose = require('mongoose');
 var httpProxy = require('http-proxy');
 
 
-// start mongoose
-mongoose.connect('mongodb://localhost/sit');
-var db = mongoose.connection;
-
-db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', function callback() {
-
-    /* test schema */
-    var testSchema = new mongoose.Schema({
-        test: String
-    });
-
-    var Test = mongoose.model('test', testSchema);
-
-    /* set Baucis */
-    baucis.rest({
-        singular: 'test'
-    });
-
     var app = express();
 
     app.configure(function () {
@@ -74,6 +55,5 @@ db.once('open', function callback() {
     http.createServer(app).listen(app.get('port'), function () {
         console.log('Express App started!');
     });
-});
 
 
