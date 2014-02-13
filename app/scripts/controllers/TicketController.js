@@ -1,8 +1,10 @@
 define([
 	'backbone',
-    'hbs!tmpl/ticketSearch'
+    'hbs!tmpl/ticketSearch',
+    'scripts/collections/Tickets.js',
+    'hbs!tmpl/ticket'
 ],
-function( Backbone , ticketSearchTmpl) {
+function( Backbone , ticketSearchTmpl, Tickets, ticketTemplate) {
     'use strict';
 
 	return Backbone.Marionette.Controller.extend({
@@ -35,10 +37,6 @@ function( Backbone , ticketSearchTmpl) {
                         },
                         success : function (collection, response) {
                             console.log ('success ' +collection+response);
-                            debugger;
-
-//            ticketsView = new ticketsView();
-//            ticketsView.render();
 
                             var SingleLink = Backbone.Marionette.ItemView.extend({
                                 tagName: "tr",
@@ -48,23 +46,25 @@ function( Backbone , ticketSearchTmpl) {
 
                             var CollectionView = Backbone.Marionette.CollectionView.extend({
                                 tagName: 'table',
-                                itemView: SingleLink
+                                itemView: SingleLink,
+                                events: {
+                                    "click .table-action"         : "open"
+                                },
+                                open : function(e) {
+                                    e.preventDefault();
+                                    debugger
+                                    TT.App.router.navigate("ticket/view", {trigger: true});
+                                }
                             });
-                            App.tickCollection = new CollectionView({
+                            TT.App.tickCollection = new CollectionView({
                                 collection: collection
-//                el: 'body'
                             });
-                            App.layout.tableHolder.show(App.tickCollection);
-//            App.layout.render();
-//            App.tickCollection = new CollectionView({
-//                collection: collection,
-//                el: 'body'
-//            }).render();
+                            TT.App.layout.tableHolder.show(TT.App.tickCollection);
                         },
                         error : function (params, response) {
-//                var responseText = JSON.parse(response.responseText);
-//                $('#errorText').text(responseText.validationErrors[0].errorCode + ' ' + responseText.validationErrors[0].developerMessage);
-//                alert('there has been a'+ response.status +' error');
+        //                var responseText = JSON.parse(response.responseText);
+        //                $('#errorText').text(responseText.validationErrors[0].errorCode + ' ' + responseText.validationErrors[0].developerMessage);
+        //                alert('there has been a'+ response.status +' error');
                             console.log(response);
 
                             console.log ('error ' +params + JSON.stringify(response));

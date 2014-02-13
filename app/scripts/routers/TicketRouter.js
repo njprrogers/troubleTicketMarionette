@@ -1,6 +1,7 @@
 define([
     'backbone',
-    'controllers/TicketController'
+    'controllers/TicketController',
+    'hbs!tmpl/ticket'
 
 ],
     function (Backbone, Controller) {
@@ -24,7 +25,7 @@ define([
 
             /* Backbone routes hash */
             routes: {
-                '': 'openTicket',
+                '': 'listTickets',
                 'ticket/open': 'openTicket',
                 'ticket/view': 'viewTicket',
                 'ticket/list': 'listTickets'
