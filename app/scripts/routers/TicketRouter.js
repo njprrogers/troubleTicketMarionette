@@ -1,19 +1,25 @@
 define([
     'backbone',
-
+    'controllers/TicketController'
 
 ],
-    function (Backbone) {
+    function (Backbone, Controller) {
         'use strict';
 
+        var getController = function() {
+
+            if(!TT.App.Controllers['ticketController'] ) {
+                TT.App.Controllers['ticketController'] = new Controller();
+            }
+
+            return TT.App.Controllers['ticketController'];
+        };
+        
         return Backbone.Router.extend({
 
             initialize: function( options ) {
                 console.log('Initialize router');
-                if (Backbone.history){
-                    console.log('Initialize history');
-                    Backbone.history.start();
-                }
+                
             },
 
             /* Backbone routes hash */
@@ -26,15 +32,18 @@ define([
 
             openTicket: function (params) {
                 console.log('Open ticket');
+
             },
 
             viewTicket: function (params) {
                 console.log('View ticket');
-
+        
             },
 
             listTickets: function (params) {
                 console.log('Ticket list');
+                
+                getController.apply(this).displayTicketList();
             }
 
         });

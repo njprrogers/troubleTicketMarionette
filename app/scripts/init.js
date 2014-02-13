@@ -1,4 +1,8 @@
-var App;
+var TT = {
+    App: undefined
+};
+
+
 require.config({
 
     
