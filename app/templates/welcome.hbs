@@ -1,5 +1,14 @@
-
 <div id="content">
+    <div class="modal hide" id="pleaseWaitDialog" data-backdrop="static" data-keyboard="false">
+        <div class="modal-header">
+            <h1>Processing...</h1>
+        </div>
+        <div class="modal-body">
+            <div class="progress progress-striped active">
+                <div class="bar" style="width: 100%;"></div>
+            </div>
+        </div>
+    </div>
     <div class="container">
         <header id="#header">
             <h1>Ticket Search</h1>
@@ -7,11 +16,11 @@
         <div id="form-container">
             <form>
                 <label for="imsi">Enter IMSI</label>
-                <input type="text" value="" id="imsi" />
-                <input type="submit" id="submit" />
+                <input type="text" value="" id="imsi"/>
+                <input type="submit" id="submit"/>
             </form>
             <div id="errorText"></div>
+            <div id="table-holder"></div>
         </div>
-        <div id="table-holder"></div>
+        <footer></footer>
     </div>
-</div>

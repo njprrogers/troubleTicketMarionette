@@ -2,10 +2,11 @@
 define([
 	'backbone',
 	'communicator',
-	'hbs!tmpl/welcome'
+	'hbs!tmpl/welcome',
+    'routers/TicketRouter'
 ],
 
-function( Backbone, Communicator, Welcome_tmpl ) {
+function( Backbone, Communicator, Welcome_tmpl , Router) {
     'use strict';
 
 	var welcomeTmpl = Welcome_tmpl;
@@ -26,6 +27,11 @@ function( Backbone, Communicator, Welcome_tmpl ) {
 //        App.layout.render();
 		Communicator.mediator.trigger("APP:START");
 	});
+
+    App.on("initialize:after", function(options){
+
+        App.router = new Router();
+    });
 
 	return App;
 });

@@ -29,7 +29,6 @@ function ( Backbone, App, Tickets, ticketTemplate, ticketsView, Welcome_tmpl ) {
         },
         submit : function (event) {
             event.preventDefault();
-            debugger
             var tickets = new Tickets();
             tickets.fetch({
                 data : {
@@ -65,7 +64,6 @@ function ( Backbone, App, Tickets, ticketTemplate, ticketsView, Welcome_tmpl ) {
 //            }).render();
                 },
                 error : function (params, response) {
-                    debugger
 //                var responseText = JSON.parse(response.responseText);
 //                $('#errorText').text(responseText.validationErrors[0].errorCode + ' ' + responseText.validationErrors[0].developerMessage);
 //                alert('there has been a'+ response.status +' error');

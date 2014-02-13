@@ -4,6 +4,7 @@ define(function() {
 	/* return an array of specs to be run */
 	return {
 		specs: ['spec/collections/Tickets.js',
+		'spec/controllers/TicketController.js',
 		'spec/exampleTest.js',
 		'spec/models/Ticket.js',
 		'spec/routers/TicketRouter.js',
