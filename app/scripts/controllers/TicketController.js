@@ -20,7 +20,6 @@ function( Backbone , ticketSearchTmpl, Tickets, ticketTemplate) {
                 template: ticketSearchTmpl,
 
                 regions: {
-                    header: "#header",
                     content: "#content",
                     tableHolder: '#table-holder'
                 },
@@ -52,7 +51,6 @@ function( Backbone , ticketSearchTmpl, Tickets, ticketTemplate) {
                                 },
                                 open : function(e) {
                                     e.preventDefault();
-                                    debugger
                                     TT.App.router.navigate("ticket/view", {trigger: true});
                                 }
                             });
@@ -74,7 +72,10 @@ function( Backbone , ticketSearchTmpl, Tickets, ticketTemplate) {
                 }
             });
             TT.App.layout = new AppLayout();
-            TT.App.main.show(TT.App.layout);
+            TT.App.addRegions({
+                content : '#content'
+            });
+            TT.App.content.show(TT.App.layout);
         }
 	});
 

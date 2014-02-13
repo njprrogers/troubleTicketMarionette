@@ -1,8 +1,6 @@
 require([
 	'backbone',
 	'application',
-//    'scripts/models/Ticket.js',
-//    'scripts/views/item/ticketView.js',
     'scripts/collections/Tickets.js',
     'hbs!tmpl/ticket',
     'scripts/views/composite/ticketsView.js',
