@@ -4,25 +4,39 @@ define([
 function( Backbone ) {
     'use strict';
 
+    var _getPleaseWaitDialog =  function() {
+        return $('#pleaseWaitDialog');
+    };
+
 	return Backbone.Marionette.Controller.extend({
 
-		initialize: function(  ) {
+        initialize: function(  ) {
 			console.log("initialize a MessageController");
 
             TT.Communicator.mediator.on("message:showLoadingMask", this.showLoadingMask);
             TT.Communicator.mediator.on("message:hideLoadingMask", this.hideLoadingMask);
+            TT.Communicator.mediator.on("message:showError", this.errorMessage);
+            TT.Communicator.mediator.on("message:hideError", this.hideErrorMessage);
 		},
+
+        errorMessage: function (title, message, callbackFunctionSuccess) {
+            console.log('Display error' + title + ' Msg:' + message);
+            _getPleaseWaitDialog().removeClass('hide');
+
+        },
+
+        hideErrorMessage: function () {
+
+        },
 
         showLoadingMask : function() {
 			console.log('Showing loading mask');
-			var pleaseWaitDialog = $('#pleaseWaitDialog');
-            pleaseWaitDialog.removeClass('hide');
+            _getPleaseWaitDialog().removeClass('hide');
         },
 
         hideLoadingMask : function() {
 			console.log('Hiding loading mask');
-			var pleaseWaitDialog = $('#pleaseWaitDialog');
-            pleaseWaitDialog.addClass('hide');
+            _getPleaseWaitDialog().addClass('hide');
         }
 	});
 });

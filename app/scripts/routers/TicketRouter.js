@@ -27,18 +27,30 @@ define([
             routes: {
                 '': 'openTicket',
                 'ticket/open': 'openTicket',
-                'ticket/view': 'viewTicket',
-                'ticket/list': 'listTickets'
+                'ticket/view/:ticketId&sourceApplication=:sourceApplication': 'viewTicket',
+                'ticket/edit/:ticketId': 'editTicket',
+                'ticket/list': 'listTickets',
+                '*ticket':  'defaultRoute'
             },
 
+            defaultRoute: function (params) {
+                console.log('Default ticket route');
+                TT.Communicator.mediator.trigger('message:showError', 'Error' ,'No source application name given.');
+            },
+            
             openTicket: function (params) {
                 console.log('Open ticket');
 
             },
 
-            viewTicket: function (params) {
+            viewTicket: function (ticketId, sourceApplication) {
                 console.log('View ticket');
         
+            },
+
+            editTicket: function (params) {
+                console.log('View ticket');
+
             },
 
             listTickets: function (params) {
