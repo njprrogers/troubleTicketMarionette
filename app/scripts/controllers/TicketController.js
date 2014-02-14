@@ -2,7 +2,7 @@ define([
 	'backbone',
     'communicator',
     'hbs!tmpl/ticketSearch',
-    'scripts/collections/Tickets.js',
+    'collections/Tickets',
     'hbs!tmpl/ticket'
 ],
 function( Backbone , Communicator, ticketSearchTmpl, Tickets, ticketTemplate) {
