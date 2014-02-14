@@ -3,19 +3,22 @@ define([
     'communicator',
     'hbs!tmpl/welcome',
     'routers/TicketRouter',
-    'controllers/MessageController'
+    'controllers/MessageController',
+    'regions/Modal'
 ],
 
-    function (Backbone, Communicator, Welcome_tmpl, Router, MessageController) {
+    function (Backbone, Communicator, Welcome_tmpl, Router, MessageController, ModalRegion) {
         'use strict';
 
         TT.App = new Backbone.Marionette.Application();
 
         TT.App.Controllers = [];
 
+
         /* Add application regions here */
         TT.App.addRegions({
-            main: '#main'
+            main: '#main',
+            modal: ModalRegion
         });
 
         /* Add initializers here */
@@ -37,7 +40,7 @@ define([
             TT.App.main.show(TT.App.layout);
         });
 
-        TT.App.on("initialize:after", function (options) {
+        TT.App.on("initialize:after", function () {
 
             if (Backbone.history) {
                 console.log('Initialize history');
