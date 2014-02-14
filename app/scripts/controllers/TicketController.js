@@ -1,10 +1,11 @@
 define([
 	'backbone',
+    'communicator',
     'hbs!tmpl/ticketSearch',
     'scripts/collections/Tickets.js',
     'hbs!tmpl/ticket'
 ],
-function( Backbone , ticketSearchTmpl, Tickets, ticketTemplate) {
+function( Backbone , Communicator, ticketSearchTmpl, Tickets, ticketTemplate) {
     'use strict';
 
 	return Backbone.Marionette.Controller.extend({
@@ -42,7 +43,6 @@ function( Backbone , ticketSearchTmpl, Tickets, ticketTemplate) {
                                 template: ticketTemplate
                             });
 
-
                             var CollectionView = Backbone.Marionette.CollectionView.extend({
                                 tagName: 'table',
                                 itemView: SingleLink,
@@ -76,6 +76,7 @@ function( Backbone , ticketSearchTmpl, Tickets, ticketTemplate) {
                 content : '#content'
             });
             TT.App.content.show(TT.App.layout);
+            TT.Communicator.mediator.trigger('hide');
         }
 	});
 

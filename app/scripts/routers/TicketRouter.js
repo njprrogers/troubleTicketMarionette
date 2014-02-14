@@ -25,7 +25,7 @@ define([
 
             /* Backbone routes hash */
             routes: {
-                '': 'listTickets',
+                '': 'openTicket',
                 'ticket/open': 'openTicket',
                 'ticket/view': 'viewTicket',
                 'ticket/list': 'listTickets'

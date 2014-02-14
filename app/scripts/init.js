@@ -2,10 +2,7 @@ var TT = {
     App: undefined
 };
 
-
 require.config({
-
-    
 
     /* starting point for application */
     deps: ['backbone.marionette', 'bootstrap', 'main'],
