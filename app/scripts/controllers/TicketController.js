@@ -10,8 +10,8 @@ function( Backbone , Communicator, ticketSearchTmpl, Tickets, ticketTemplate) {
 
 	return Backbone.Marionette.Controller.extend({
 
-		initialize: function( options ) {
-			console.log("initialize a Ticketcontroller Controller");
+		initialize: function(  ) {
+			console.log("initialize a Ticketcontroller Controller ");
 		},
 
         displayTicketList : function(){
@@ -28,6 +28,7 @@ function( Backbone , Communicator, ticketSearchTmpl, Tickets, ticketTemplate) {
                     "click #submit"         : "submit"
                 },
                 submit : function (event) {
+                    TT.Communicator.mediator.trigger('message:showLoadingMask');
                     event.preventDefault();
                     var tickets = new Tickets();
                     tickets.fetch({
@@ -58,6 +59,8 @@ function( Backbone , Communicator, ticketSearchTmpl, Tickets, ticketTemplate) {
                                 collection: collection
                             });
                             TT.App.layout.tableHolder.show(TT.App.tickCollection);
+
+                            TT.Communicator.mediator.trigger('message:hideLoadingMask');
                         },
                         error : function (params, response) {
         //                var responseText = JSON.parse(response.responseText);
@@ -76,7 +79,7 @@ function( Backbone , Communicator, ticketSearchTmpl, Tickets, ticketTemplate) {
                 content : '#content'
             });
             TT.App.content.show(TT.App.layout);
-            TT.Communicator.mediator.trigger('hide');
+            TT.Communicator.mediator.trigger('message:hideLoadingMask');
         }
 	});
 

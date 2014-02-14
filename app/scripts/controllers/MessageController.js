@@ -6,11 +6,11 @@ function( Backbone ) {
 
 	return Backbone.Marionette.Controller.extend({
 
-		initialize: function( options ) {
+		initialize: function(  ) {
 			console.log("initialize a MessageController");
 
-            TT.Communicator.mediator.on("message:show", this.showLoadingMask);
-            TT.Communicator.mediator.on("hide", this.hideLoadingMask);
+            TT.Communicator.mediator.on("message:showLoadingMask", this.showLoadingMask);
+            TT.Communicator.mediator.on("message:hideLoadingMask", this.hideLoadingMask);
 		},
 
         showLoadingMask : function() {
