@@ -22,7 +22,11 @@ function( Backbone, TicketviewTmpl  ) {
 		events: {},
 
 		/* on render callback */
-		onRender: function() {}
+		onRender: function() {},
+
+
+
+
 	});
 
 });

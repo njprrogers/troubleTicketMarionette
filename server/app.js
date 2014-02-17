@@ -11,49 +11,59 @@ var baucis = require('baucis');
 var httpProxy = require('http-proxy');
 
 
-    var app = express();
+var app = express();
 
-    app.configure(function () {
-        app.set('port', 9000);
+app.configure(function () {
+    app.set('port', 9000);
 
-        app.set('view engine', 'handlebars');
-        app.set('views', __dirname + '../app/scripts/views');
+    app.set('view engine', 'handlebars');
+    app.set('views', __dirname + '../app/scripts/views');
+});
+
+app.use('/api/v1', baucis());
+
+// simple log
+app.use(function (req, res, next) {
+    console.log('%s %s', req.method, req.url);
+    next();
+});
+
+// mount static
+app.use(express.static(path.join(__dirname, '../app')));
+app.use(express.static(path.join(__dirname, '../.tmp')));
+
+
+// route index.html
+app.get('/', function (req, res) {
+    res.sendfile(path.join(__dirname, '../app/index.html'));
+});
+
+
+var proxy = httpProxy.createProxyServer({});
+
+app.get('/troubleticketapi/api/v1/tickets', function (req, res) {
+
+    var target = 'http://ubuntuserver:8090';
+    console.log('Tickets API call, redirecto to ' + target);
+
+    proxy.web(req, res, {
+        target: target
     });
+});
 
-    app.use('/api/v1', baucis());
+app.get('/troubleticketapi/api/v1/tickets/*', function (req, res) {
 
-    // simple log
-    app.use(function (req, res, next) {
-        console.log('%s %s', req.method, req.url);
-        next();
+    var target = 'http://ubuntuserver:8090';
+    console.log('Tickets API call, redirecto to ' + target);
+
+    proxy.web(req, res, {
+        target: target
     });
+});
 
-    // mount static
-    app.use(express.static(path.join(__dirname, '../app')));
-    app.use(express.static(path.join(__dirname, '../.tmp')));
-
-
-    // route index.html
-    app.get('/', function (req, res) {
-        res.sendfile(path.join(__dirname, '../app/index.html'));
-    });
-
-
-    var proxy = httpProxy.createProxyServer({});
-
-    app.get('/troubleticketapi/api/v1/tickets', function (req, res) {
-
-        var target = 'http://ubuntuserver:8090';
-        console.log('Tickets API call, redirecto to ' + target);
-
-        proxy.web(req, res, {
-            target: target
-        });
-    });
-
-    // start server
-    http.createServer(app).listen(app.get('port'), function () {
-        console.log('Express App started!');
-    });
+// start server
+http.createServer(app).listen(app.get('port'), function () {
+    console.log('Express App started!');
+});
 
 

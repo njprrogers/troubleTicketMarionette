@@ -34,7 +34,12 @@ define([
 
             console.log('Display welcome message');
             var AppLayout = Backbone.Marionette.Layout.extend({
-                template: Welcome_tmpl
+                template: Welcome_tmpl,
+                regions: {
+                    header : '#header',
+                    content: "#content",
+                    footer : 'footer'
+                }
             });
             TT.App.layout = new AppLayout();
             TT.App.main.show(TT.App.layout);

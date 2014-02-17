@@ -3,9 +3,10 @@ define([
     'communicator',
     'hbs!tmpl/ticketSearch',
     'collections/Tickets',
-    'hbs!tmpl/ticket'
+    'hbs!tmpl/ticket',
+    'hbs!tmpl/item/ticketView_tmpl'
 ],
-function( Backbone , Communicator, ticketSearchTmpl, Tickets, ticketTemplate) {
+function( Backbone , Communicator, ticketSearchTmpl, Tickets, ticketTemplate, ticketViewTmpl) {
     'use strict';
 
 	return Backbone.Marionette.Controller.extend({
@@ -14,8 +15,41 @@ function( Backbone , Communicator, ticketSearchTmpl, Tickets, ticketTemplate) {
 			console.log("initialize a Ticketcontroller Controller ");
 		},
 
+        displayTicketView : function(ticketId, Ticket) {
+            TT.Communicator.mediator.trigger('message:showLoadingMask');
+
+            var ticket = new Ticket({
+                id:ticketId
+            });
+            ticket.fetch({
+                data : {
+                    'sourceApplication' : 'cqm',
+                    'dataMode' : 'SUMMARY'
+
+                },
+                success : function(ticketModel) {
+                    console.log('Retrieve ticket '+ ticketId);
+
+                    var viewTicket = Backbone.Marionette.ItemView.extend({
+                        tagName: "div",
+                        template: ticketViewTmpl
+                    });
+                    var ourTicketView = new viewTicket({
+                        model : ticketModel
+                    });
+                    TT.App.layout.regionManager.close('content');
+                    TT.App.layout.content.show(ourTicketView);
+
+                    TT.Communicator.mediator.trigger('message:hideLoadingMask');
+                },
+                error : function(a, b) {
+                    console.log(a, b);
+                }
+            });
+        },
         displayTicketList : function(){
             console.log('displayTicketList');
+            TT.Communicator.mediator.trigger('message:showLoadingMask');
 
             var AppLayout = Backbone.Marionette.Layout.extend({
                 template: ticketSearchTmpl,
@@ -41,19 +75,20 @@ function( Backbone , Communicator, ticketSearchTmpl, Tickets, ticketTemplate) {
 
                             var SingleLink = Backbone.Marionette.ItemView.extend({
                                 tagName: "tr",
-                                template: ticketTemplate
+                                template: ticketTemplate,
+
+								events: {
+                                    "click .table-action"         : "open"
+                                },
+                                open : function(e, params, params2) {
+                                    e.preventDefault();
+									TT.App.router.navigate("ticket/view/"+this.model.get('id')+'?sourceApplication=cqm', {trigger: true});
+                                }
                             });
 
                             var CollectionView = Backbone.Marionette.CollectionView.extend({
                                 tagName: 'table',
-                                itemView: SingleLink,
-                                events: {
-                                    "click .table-action"         : "open"
-                                },
-                                open : function(e) {
-                                    e.preventDefault();
-                                    TT.App.router.navigate("ticket/view", {trigger: true});
-                                }
+                                itemView: SingleLink
                             });
                             TT.App.tickCollection = new CollectionView({
                                 collection: collection

@@ -1,4 +1,37 @@
 {{!empty TicketviewTmpl template}}
 
 
-ticket.hbs
+<div class="container">
+    <div class="row">
+        <div class="span6">
+            <p>IMSI : {{imsi}}</h2>
+            <p>UPDATED : {{updated}}</h2>
+        </div>
+        <div class="span6">
+            <p>MSISDN : {{msisdn}}</p>
+            <p>CREATED : {{created}}</p>
+        </div>
+    </div>
+
+    <hr />
+    <div class="row">
+        <div class="span12">
+            <p>ISSUE TIME PERIOD : FROM {{startTime}} TO {{endTime}}</p>
+            <p>ISSUE TITLE : {{title}}</p>
+            <p>ISSUE LOCATION : {{location}}</p>
+            <p>STATUS : {{status}}</p>
+            <p>DESCRIPTION : {{description}}</p>
+            <p>ATTACHMENTS : </p>
+            {{#each attachments}}
+                <p> {{filename}}</p>
+            {{/each}}
+        </div>
+    </div>
+
+    <a href="#ticket/list?sourceApplication=cqm">Go to Search</a>
+    <a href="#ticket/edit/{{id}}">Edit this ticket</a>
+</div>
+
+<div class="container">
+
+</div>

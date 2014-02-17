@@ -1,10 +1,11 @@
 define([
     'backbone',
     'controllers/TicketController',
+    'models/Ticket',
     'hbs!tmpl/ticket'
 
 ],
-    function (Backbone, Controller) {
+    function (Backbone, Controller, Ticket) {
         'use strict';
 
         var getController = function() {
@@ -27,9 +28,9 @@ define([
             routes: {
                 '': 'openTicket',
                 'ticket/open&sourceApplication=:sourceApplication': 'openTicket',
-                'ticket/view/:ticketId&sourceApplication=:sourceApplication': 'viewTicket',
-                'ticket/edit/:ticketId&sourceApplication=:sourceApplication': 'editTicket',
-                'ticket/list&sourceApplication=:sourceApplication': 'listTickets',
+                'ticket/view/:ticketId?sourceApplication=:sourceApplication': 'viewTicket',
+                'ticket/edit/:ticketId?sourceApplication=:sourceApplication': 'editTicket',
+                'ticket/list?sourceApplication=:sourceApplication': 'listTickets',
                 '*ticket':  'defaultRoute'
             },
 
@@ -45,9 +46,8 @@ define([
 
             viewTicket: function (ticketId, sourceApplication) {
                 console.log('View ticket');
-        
+                getController.apply(this).displayTicketView(ticketId, Ticket);
             },
-
             editTicket: function (params) {
                 console.log('View ticket');
 
