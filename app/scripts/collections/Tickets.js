@@ -14,6 +14,6 @@ function( Backbone, Ticket ) {
 		model: Ticket,
 
         url : 'http://localhost:9000/troubleticketapi/api/v1/tickets'
-		
+
 	});
 });

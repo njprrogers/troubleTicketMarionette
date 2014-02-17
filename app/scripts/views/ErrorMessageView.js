@@ -13,7 +13,9 @@ function(Backbone, ErrorMessageTmpl){
         template: ErrorMessageTmpl,
 
         render: function(){
-            this.$el.addClass('modal').html( this.template(this.model.toJSON()));
-        }
+            this.$el.addClass('modal').html( this.template(this.attributes));
+        },
+
+
 	});
 });

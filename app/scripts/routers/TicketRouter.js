@@ -26,10 +26,10 @@ define([
             /* Backbone routes hash */
             routes: {
                 '': 'openTicket',
-                'ticket/open': 'openTicket',
+                'ticket/open&sourceApplication=:sourceApplication': 'openTicket',
                 'ticket/view/:ticketId&sourceApplication=:sourceApplication': 'viewTicket',
-                'ticket/edit/:ticketId': 'editTicket',
-                'ticket/list': 'listTickets',
+                'ticket/edit/:ticketId&sourceApplication=:sourceApplication': 'editTicket',
+                'ticket/list&sourceApplication=:sourceApplication': 'listTickets',
                 '*ticket':  'defaultRoute'
             },
 
