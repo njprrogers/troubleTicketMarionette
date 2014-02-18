@@ -30,11 +30,11 @@ function( Backbone , ModalView , ErrorModel) {
 				okCallbackFn : okCallbackFn,
 				cancelCallbackFn : cancelCallbackFn
             }});
-			TT.App.modal.show(view);
+			TT.App.modal.showModal(view);
         },
 
         hideErrorMessage: function () {
-            TT.App.modal.hide();
+            TT.App.modal.hideModal();
         },
 
         showLoadingMask : function() {

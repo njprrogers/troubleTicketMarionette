@@ -6,7 +6,6 @@ define(function() {
 		specs: ['spec/collections/Tickets.js',
 		'spec/controllers/TicketController.js',
 		'spec/exampleTest.js',
-		'spec/models/ErrorMessageModel.js',
 		'spec/models/Ticket.js',
 		'spec/regions/modal.js',
 		'spec/routers/TicketRouter.js',

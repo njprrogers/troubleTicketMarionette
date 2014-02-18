@@ -2,10 +2,11 @@ define([
     'backbone',
     'controllers/TicketController',
     'models/Ticket',
-    'hbs!tmpl/ticket'
+    'hbs!tmpl/ticket',
+    'vendor/backbone.routefilter'
 
 ],
-    function (Backbone, Controller, Ticket) {
+    function (Backbone, Controller, Ticket, routerFilter) {
         'use strict';
 
         var getController = function() {
@@ -34,6 +35,15 @@ define([
                 '*ticket':  'defaultRoute'
             },
 
+            before: function( route, params ) {
+                console.log('before route');
+                TT.Communicator.mediator.trigger('message:hideError');
+            },
+
+            after: function( route, params ) {
+                console.log('after route');
+            },
+
             defaultRoute: function (params) {
                 console.log('Default ticket route');
                 TT.Communicator.mediator.trigger('message:showError', 'Error' ,'No source application name given.');
@@ -44,7 +54,7 @@ define([
 
             },
 
-            viewTicket: function (ticketId, sourceApplication) {
+            viewTicket: function (ticketId) {
                 console.log('View ticket');
                 getController.apply(this).displayTicketView(ticketId, Ticket);
             },

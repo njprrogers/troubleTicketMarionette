@@ -11,6 +11,7 @@ function( Backbone ) {
 
 		initialize: function() {
 			console.log("initialize a Modal Region");
+            this.$el = this.getEl(this.el);
 		},
 
         constructor: function(){
@@ -27,11 +28,21 @@ function( Backbone ) {
 
         showModal: function(view){
             view.on("close", this.hideModal, this);
+
             this.$el.modal('show');
+            $('.modal-backdrop').remove();
+			this.show(view);
+            this.$el.addClass('modal-backdrop');
         },
 
         hideModal: function(){
             this.$el.modal('hide');
+            this.$el.removeClass('modal-backdrop');
+        },
+
+        cleanModal: function(){
+            this.$el.modal('hide');
+            this.$el.empty();
         }
 	});
 

@@ -24,6 +24,8 @@ define([
         /* Add initializers here */
         TT.App.addInitializer(function () {
 
+            console.log('Before app start');
+
             Communicator.mediator.trigger("APP:START");
 
             TT.Communicator = Communicator;
