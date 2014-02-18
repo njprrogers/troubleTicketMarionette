@@ -31,13 +31,15 @@ function( Backbone , Communicator, ticketSearchTmpl, Tickets, ticketTemplate, ti
                     console.log('Retrieve ticket '+ ticketId);
 
                     var viewTicket = Backbone.Marionette.ItemView.extend({
-                        tagName: "div",
+//                        tagName: "#content",
                         template: ticketViewTmpl
                     });
                     var ourTicketView = new viewTicket({
                         model : ticketModel
                     });
-                    TT.App.layout.regionManager.close('content');
+//                     TT.App.layout.regionManager.removeRegion('content');
+// 					TT.App.layout.regionManager.addRegion('content');
+					
                     TT.App.layout.content.show(ourTicketView);
 
                     TT.Communicator.mediator.trigger('message:hideLoadingMask');
@@ -51,13 +53,8 @@ function( Backbone , Communicator, ticketSearchTmpl, Tickets, ticketTemplate, ti
             console.log('displayTicketList');
             TT.Communicator.mediator.trigger('message:showLoadingMask');
 
-            var AppLayout = Backbone.Marionette.Layout.extend({
+            var ticketListPage = Backbone.Marionette.ItemView.extend({
                 template: ticketSearchTmpl,
-
-                regions: {
-                    content: "#content",
-                    tableHolder: '#table-holder'
-                },
                 events: {
                     "click #submit"         : "submit"
                 },
@@ -82,7 +79,8 @@ function( Backbone , Communicator, ticketSearchTmpl, Tickets, ticketTemplate, ti
                                 },
                                 open : function(e, params, params2) {
                                     e.preventDefault();
-									TT.App.router.navigate("ticket/view/"+this.model.get('id')+'?sourceApplication=cqm', {trigger: true});
+    								TT.App.router.navigate("ticket/view/"+this.model.get('id')+'?sourceApplication=cqm', {trigger: true, replace:true});
+
                                 }
                             });
 
@@ -93,7 +91,7 @@ function( Backbone , Communicator, ticketSearchTmpl, Tickets, ticketTemplate, ti
                             TT.App.tickCollection = new CollectionView({
                                 collection: collection
                             });
-                            TT.App.layout.tableHolder.show(TT.App.tickCollection);
+                            TT.App.layout.content.show(TT.App.tickCollection);
 
                             TT.Communicator.mediator.trigger('message:hideLoadingMask');
                         },
@@ -109,11 +107,8 @@ function( Backbone , Communicator, ticketSearchTmpl, Tickets, ticketTemplate, ti
 
                 }
             });
-            TT.App.layout = new AppLayout();
-            TT.App.addRegions({
-                content : '#content'
-            });
-            TT.App.content.show(TT.App.layout);
+
+            TT.App.layout.content.show(new ticketListPage());
             TT.Communicator.mediator.trigger('message:hideLoadingMask');
         }
 	});

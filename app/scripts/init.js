@@ -5,7 +5,7 @@ var TT = {
 require.config({
 
     /* starting point for application */
-    deps: ['backbone.marionette', 'bootstrap', 'main'],
+    deps: ['backbone', 'backbone.marionette', 'bootstrap', 'main'],
 
 
     shim: {
@@ -24,7 +24,7 @@ require.config({
 
     paths: {
         jquery: '../bower_components/jquery/jquery',
-        backbone: '../bower_components/backbone-amd/backbone',
+        backbone: '../bower_components/backbone/backbone',
         underscore: '../bower_components/underscore-amd/underscore',
 
         /* alias all marionette libs */

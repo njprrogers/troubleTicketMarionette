@@ -8,7 +8,7 @@ require.config({
         spec: '../../test/spec', // lives in the test directory
 
         jquery: '../bower_components/jquery/jquery',
-        backbone: '../bower_components/backbone-amd/backbone',
+        backbone: '../bower_components/backbone/backbone',
         underscore: '../bower_components/underscore-amd/underscore',
 
         /* backbone plugins */
