@@ -35,6 +35,7 @@ function( Backbone ) {
 
         hideModal: function(){
             this.$el.modal('hide');
+            this.$el.hide();
             this.$el.removeClass('modal-backdrop');
         },
 
