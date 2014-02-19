@@ -13,8 +13,8 @@ function(Backbone, ErrorMessageTmpl){
         template: ErrorMessageTmpl,
 
         render: function(){
-            this.$el.addClass('modal').html( this.template(this.attributes));
-        },
+            this.setElement(this.template(this.attributes));
+        }
 
 
 	});

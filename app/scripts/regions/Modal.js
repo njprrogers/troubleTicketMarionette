@@ -30,9 +30,7 @@ function( Backbone ) {
             view.on("close", this.hideModal, this);
 
             this.$el.modal('show');
-            $('.modal-backdrop').remove();
 			this.show(view);
-            this.$el.addClass('modal-backdrop');
         },
 
         hideModal: function(){
