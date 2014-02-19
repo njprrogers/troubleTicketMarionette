@@ -22,8 +22,8 @@ require.config({
         'backbone.routefilter': 'vendor/backbone.routefilter',
 
         /* alias the bootstrap js lib */
-        bootstrap: 'vendor/bootstrap',
-        'bootstrap-button': 'vendor/bootstrap-button',
+        bootstrap: '../bower_components/bootstrap/dist/js/bootstrap',
+//        'bootstrap-button': 'vendor/bootstrap-button',
 
         /* Alias text.js for template loading and shortcut the templates dir to tmpl */
         text: '../bower_components/requirejs-text/text',
