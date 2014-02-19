@@ -4,10 +4,12 @@ define([
     'hbs!tmpl/welcome',
     'routers/TicketRouter',
     'controllers/MessageController',
-    'regions/Modal'
+    'regions/Modal',
+    'hbs',
+    'handlebars'
 ],
 
-    function (Backbone, Communicator, Welcome_tmpl, Router, MessageController, ModalRegion) {
+    function (Backbone, Communicator, Welcome_tmpl, Router, MessageController, ModalRegion, hbs, handlebars) {
         'use strict';
 
         TT.App = new Backbone.Marionette.Application();

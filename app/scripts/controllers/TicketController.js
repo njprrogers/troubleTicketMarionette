@@ -3,10 +3,12 @@ define([
     'communicator',
     'hbs!tmpl/ticketSearch',
     'collections/Tickets',
+    'views/item/ticketEdit',
+    'models/Ticket',
     'hbs!tmpl/ticket',
     'hbs!tmpl/item/ticketView_tmpl'
 ],
-function( Backbone , Communicator, ticketSearchTmpl, Tickets, ticketTemplate, ticketViewTmpl) {
+function( Backbone , Communicator, ticketSearchTmpl, Tickets, TicketEditView, TicketModel, ticketTemplate, ticketViewTmpl) {
     'use strict';
 
 	return Backbone.Marionette.Controller.extend({
@@ -15,6 +17,33 @@ function( Backbone , Communicator, ticketSearchTmpl, Tickets, ticketTemplate, ti
 			console.log("initialize a Ticketcontroller Controller ");
 		},
 
+        displayTicketEdit : function (ticketId) {
+
+            var ticket = new TicketModel({
+                id:ticketId
+            });
+            ticket.fetch({
+                data : {
+                    'sourceApplication' : 'cqm',
+                    'dataMode' : 'SUMMARY'
+
+                },
+                success : function(ticketModel) {
+                    console.log('Retrieve ticket '+ ticketId);
+
+                    var ourTicketEdit = new TicketEditView({
+                        model : ticketModel
+                    });
+
+                    TT.App.layout.content.show(ourTicketEdit);
+
+                    TT.Communicator.mediator.trigger('message:hideLoadingMask');
+                },
+                error : function(a, b) {
+                    console.log(a, b);
+                }
+            });
+        },
         displayTicketView : function(ticketId, Ticket) {
             TT.Communicator.mediator.trigger('message:showLoadingMask');
 

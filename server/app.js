@@ -60,7 +60,15 @@ app.get('/troubleticketapi/api/v1/tickets/*', function (req, res) {
         target: target
     });
 });
+app.put('/troubleticketapi/api/v1/tickets/*', function (req, res) {
 
+    var target = 'http://ubuntuserver:8090';
+    console.log('Tickets API call, redirecto to ' + target);
+
+    proxy.web(req, res, {
+        target: target
+    });
+});
 // start server
 http.createServer(app).listen(app.get('port'), function () {
     console.log('Express App started!');

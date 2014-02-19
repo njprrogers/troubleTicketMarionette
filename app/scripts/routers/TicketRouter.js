@@ -59,9 +59,9 @@ define([
                 console.log('View ticket');
                 getController.apply(this).displayTicketView(ticketId, Ticket);
             },
-            editTicket: function (params) {
-                console.log('View ticket');
-
+            editTicket: function (ticketId) {
+                console.log('Edit ticket');
+                getController.apply(this).displayTicketEdit(ticketId);
             },
 
             listTickets: function (params) {

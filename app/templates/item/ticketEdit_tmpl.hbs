@@ -1,0 +1,40 @@
+{{!empty TicketeditTmpl template}}
+<div class="row">
+    <div class="span6">
+        <p>IMSI : {{imsi}}</h2>
+        <p>UPDATED : {{updated}}</h2>
+    </div>
+    <div class="span6">
+        <p>MSISDN : {{msisdn}}</p>
+        <p>CREATED : {{created}}</p>
+    </div>
+    <div class="span12">
+        <p>ISSUE TIME PERIOD : FROM {{startTime}} TO {{endTime}}</p>
+    </div>
+</div>
+
+<form id="ticketEdit">
+    <p>
+        <label for="title">Title</label>
+        <input id="title" value="{{title}}" name="title" />
+    </p>
+
+    <p>
+        <label for="location">Location</label>
+        <input id="location" value="{{location}}" name="location" />
+    </p>
+    <p>
+        <label for="status">Status</label>
+        <select id="status">
+            <option value="open">Open</option>
+            <option value="pending">Pending</option>
+            <option value="solved">Solved</option>
+        </select>
+    </p>
+    <p>
+        <label for="description">Description</label>
+        <textarea id="description" value="{{description}}" name="description">{{description}}</textarea>
+    </p>
+    <a href="#" id="cancel">Cancel</a>
+    <input type="submit" id="submit-edit" value="Done" />
+</form>
