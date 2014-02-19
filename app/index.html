@@ -30,7 +30,24 @@
         <script data-main="scripts/init" src="bower_components/requirejs/require.js"></script>
         <!-- endbuild -->
         <div role="main" id="main"></div>
-        <div role="modal" id="modal" ></div>
+            <div class="modal" id="modal" style="display:block; " id="pleaseWaitDialog" data-backdrop="static" data-keyboard="false">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1>Processing...</h1>
+                        </div>
+                        <div class="modal-body">
+                            <div class="progress progress-striped active">
+                                <div class="progress-bar" style="width: 100%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
         <script>document.write('<script src="http://'
             + (location.host || 'localhost').split(':')[0]
             + ':35729/livereload.js?snipver=1"><\/script>');
