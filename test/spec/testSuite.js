@@ -12,6 +12,7 @@ define(function() {
 		'spec/views/ErrorMessageView.js',
 		'spec/views/composite/ticketsView.js',
 		'spec/views/item/ticketEdit.js',
+        'spec/views/item/ticketAdd.js',
 		'spec/views/item/ticketView.js'
 		]
 	};

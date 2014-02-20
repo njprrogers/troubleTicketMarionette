@@ -4,11 +4,12 @@ define([
     'hbs!tmpl/ticketSearch',
     'collections/Tickets',
     'views/item/ticketEdit',
+    'views/item/ticketAdd',
     'models/Ticket',
     'hbs!tmpl/ticket',
     'hbs!tmpl/item/ticketView_tmpl'
 ],
-function( Backbone , Communicator, ticketSearchTmpl, Tickets, TicketEditView, TicketModel, ticketTemplate, ticketViewTmpl) {
+function( Backbone , Communicator, ticketSearchTmpl, Tickets, TicketEditView,TicketAddView, TicketModel, ticketTemplate, ticketViewTmpl) {
     'use strict';
 
 	return Backbone.Marionette.Controller.extend({
@@ -43,6 +44,32 @@ function( Backbone , Communicator, ticketSearchTmpl, Tickets, TicketEditView, Ti
                     console.log(a, b);
                 }
             });
+        },
+        displayTicketAdd : function () {
+
+            var ticketModel = new TicketModel({
+                imsi:'123456789123456',
+                msisdn: '123456789123456',
+                startTime: '2013-11-09 00:00',
+                endTime: '2013-11-14 23:59',
+                title: 'title',
+                customerName: 'Bob McBob',
+                plan: 'Plan9',
+                businessName: 'Bobs Magical Wax Show',
+                avgBill: '10',
+                tariff: 'A',
+                type: 'My kind',
+                description: 'http://example.com',
+                sourceApplication: 'cqm'
+
+            });
+            var ourTicketAdd = new TicketAddView({
+                model : ticketModel
+            });
+
+            TT.App.layout.content.show(ourTicketAdd);
+
+            TT.Communicator.mediator.trigger('message:hideLoadingMask');
         },
         displayTicketView : function(ticketId, Ticket) {
             TT.Communicator.mediator.trigger('message:showLoadingMask');

@@ -32,6 +32,7 @@ define([
                 'ticket/open?sourceApplication=:sourceApplication': 'openTicket',
                 'ticket/view/:ticketId?sourceApplication=:sourceApplication': 'viewTicket',
                 'ticket/edit/:ticketId?sourceApplication=:sourceApplication': 'editTicket',
+                'ticket/add?sourceApplication=:sourceApplication': 'addTicket',
                 'ticket/list?sourceApplication=:sourceApplication': 'listTickets',
                 '*ticket':  'defaultRoute'
             },
@@ -62,6 +63,10 @@ define([
             editTicket: function (ticketId) {
                 console.log('Edit ticket');
                 getController.apply(this).displayTicketEdit(ticketId);
+            },
+            addTicket: function (s) {
+                console.log('Add ticket');
+                getController.apply(this).displayTicketAdd();
             },
 
             listTickets: function (params) {
