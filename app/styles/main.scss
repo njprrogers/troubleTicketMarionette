@@ -5,6 +5,33 @@
     width: 800px;
 }
 
+body {
+  background-color: #525252;
+  color: #FFF;
+}
+
+header {
+  background-color: #333;
+  color: #FFF;
+}
+
+footer {
+  background-color: #333;
+  color: #FFF;
+}
+
+.modal-content {
+  background-color: #333;
+  color: #FFF;
+}
+
+#footer {
+  height: 5em;
+}
+
+#content {
+  margin: 2em auto;
+}
 
 /** Bootstrap Dark Modal Styles **/
 .modal-open .modal, .btn:focus {

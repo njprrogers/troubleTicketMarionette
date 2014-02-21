@@ -28,9 +28,10 @@ function( Backbone ) {
 
         showModal: function(view){
             view.on('close', this.hideModal, this);
-
-            this.$el.modal('show');
+			
 			this.show(view);
+            this.$el.modal('show');
+			
         },
 
         hideModal: function(){
