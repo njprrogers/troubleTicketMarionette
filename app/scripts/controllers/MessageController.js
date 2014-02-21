@@ -1,8 +1,9 @@
 define([
 	'backbone',
-	'views/ErrorMessageView'
+	'views/messages/ErrorMessageView',
+	'views/messages/LoadingMessageView'
 ],
-function( Backbone , ModalView , ErrorModel) {
+function( Backbone , ErrorMessageView,  LoadingMessageView) {
     'use strict';
 
     var _getPleaseWaitDialog =  function() {
@@ -20,31 +21,39 @@ function( Backbone , ModalView , ErrorModel) {
             TT.Communicator.mediator.on("message:hideError", this.hideErrorMessage);
 		},
 
-        errorMessage: function (title, message, okCallbackFn, cancelCallbackFn) {
+        errorMessage: function (title, message, okCallbackFn, okCallbackScope, okCallbackParams, cancelCallbackFn, cancelCallbackScope, cancelCallbackParams) {
             console.log('Display error' + title + ' Msg:' + message);
-            _getPleaseWaitDialog().addClass('hide');
+            //_getPleaseWaitDialog().addClass('hide');
 
-			var view = new ModalView( {attributes : {
+			var view = new LoadingMessageView( {attributes : {
                 title : title,
                 msg : message,
-				okCallbackFn : okCallbackFn,
-				cancelCallbackFn : cancelCallbackFn
-            }});
+            },
+                okCallbackFn : okCallbackFn,
+                cancelCallbackFn : cancelCallbackFn
+            });
 			TT.App.modal.showModal(view);
         },
 
         hideErrorMessage: function () {
+            console.log('Hiding error popup');
             TT.App.modal.hideModal();
         },
 
-        showLoadingMask : function() {
-			console.log('Showing loading mask');
-            _getPleaseWaitDialog().removeClass('hide');
+        showLoadingMask : function(title, message) {
+            console.log('Display error' + title + ' Msg:' + message);
+
+            var view = new LoadingMessageView( {attributes : {
+                title : title,
+                msg : message
+            	}
+			});
+            TT.App.modal.showModal(view);
         },
 
         hideLoadingMask : function() {
 			console.log('Hiding loading mask');
-            _getPleaseWaitDialog().addClass('hide');
+            TT.App.modal.hideModal();
         }
 	});
 });
