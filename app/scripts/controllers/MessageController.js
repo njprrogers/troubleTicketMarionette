@@ -2,7 +2,7 @@ define([
 	'backbone',
 	'views/ErrorMessageView'
 ],
-function( Backbone , ModalView , ErrorModel) {
+function( Backbone , ModalView ) {
     'use strict';
 
     var _getPleaseWaitDialog =  function() {
@@ -20,16 +20,17 @@ function( Backbone , ModalView , ErrorModel) {
             TT.Communicator.mediator.on("message:hideError", this.hideErrorMessage);
 		},
 
-        errorMessage: function (title, message, okCallbackFn, cancelCallbackFn) {
+        errorMessage: function (title, message, okCallbackFn, okCallbackScope, okCallbackParams, cancelCallbackFn, cancelCallbackScope, cancelCallbackParams) {
             console.log('Display error' + title + ' Msg:' + message);
             _getPleaseWaitDialog().addClass('hide');
 
 			var view = new ModalView( {attributes : {
                 title : title,
                 msg : message,
-				okCallbackFn : okCallbackFn,
-				cancelCallbackFn : cancelCallbackFn
-            }});
+            },
+                okCallbackFn : okCallbackFn,
+                cancelCallbackFn : cancelCallbackFn
+            });
 			TT.App.modal.showModal(view);
         },
 
