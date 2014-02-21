@@ -24,7 +24,9 @@ function(Backbone, ErrorMessageTmpl){
         },
 
         submit : function(){
-            this.options.okCallbackFn.apply(this);
+			if(this.options.okCallbackFn){
+				this.options.okCallbackFn.apply(this);
+			}
         }
 
 	});
