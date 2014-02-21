@@ -39,7 +39,7 @@ define([
 
             before: function( route, params ) {
                 console.log('before route');
-                TT.Communicator.mediator.trigger('message:hideError');
+                //TT.Communicator.mediator.trigger('message:hideError');
             },
 
             after: function( route, params ) {
