@@ -4,7 +4,7 @@
 	var root = this;
 
 	root.define([
-		'views/ErrorMessageView'
+		'views/messages/ErrorMessageView'
 		],
 		function( Errormessageview ) {
 

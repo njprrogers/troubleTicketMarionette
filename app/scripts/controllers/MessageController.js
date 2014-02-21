@@ -25,7 +25,7 @@ function( Backbone , ErrorMessageView,  LoadingMessageView) {
             console.log('Display error' + title + ' Msg:' + message);
             //_getPleaseWaitDialog().addClass('hide');
 
-			var view = new LoadingMessageView( {attributes : {
+			var view = new ErrorMessageView( {attributes : {
                 title : title,
                 msg : message,
             },

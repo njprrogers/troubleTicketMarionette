@@ -1,18 +1,18 @@
 define([
 	'backbone',
-	'hbs!tmpl/item/ticketAdd_tmpl'
+	'hbs!tmpl/item/ticketOpen_tmpl'
 ],
-function( Backbone, TicketaddTmpl  ) {
+function( Backbone, TicketOpenTmpl  ) {
     'use strict';
 
 	/* Return a ItemView class definition */
 	return Backbone.Marionette.ItemView.extend({
 
 		initialize: function() {
-			console.log('initialize a Ticketadd ItemView');
+			console.log('initialize a TicketOpen ItemView');
 		},
 		
-    	template: TicketaddTmpl,
+    	template: TicketOpenTmpl,
         
 
     	/* ui selector cache */
@@ -20,7 +20,7 @@ function( Backbone, TicketaddTmpl  ) {
 
 		/* Ui events hash */
 		events: {
-            'click #submit-add'         : 'submit'
+            'click #submit-open'         : 'submit'
         },
         submit : function(e, params, params2) {
             e.preventDefault();

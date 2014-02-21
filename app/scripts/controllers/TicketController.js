@@ -4,12 +4,12 @@ define([
     'hbs!tmpl/ticketSearch',
     'collections/Tickets',
     'views/item/ticketEdit',
-    'views/item/ticketAdd',
+    'views/item/ticketOpen',
     'models/Ticket',
     'hbs!tmpl/ticket',
     'hbs!tmpl/item/ticketView_tmpl'
 ],
-function( Backbone , Communicator, ticketSearchTmpl, Tickets, TicketEditView,TicketAddView, TicketModel, ticketTemplate, ticketViewTmpl) {
+function( Backbone , Communicator, ticketSearchTmpl, Tickets, TicketEditView,TicketOpenView, TicketModel, ticketTemplate, ticketViewTmpl) {
     'use strict';
 
 	return Backbone.Marionette.Controller.extend({
@@ -45,7 +45,7 @@ function( Backbone , Communicator, ticketSearchTmpl, Tickets, TicketEditView,Tic
                 }
             });
         },
-        displayTicketAdd : function () {
+        displayTicketOpen : function () {
 
             var ticketModel = new TicketModel({
                 imsi:'123456789123456',
@@ -63,11 +63,11 @@ function( Backbone , Communicator, ticketSearchTmpl, Tickets, TicketEditView,Tic
                 sourceApplication: 'cqm'
 
             });
-            var ourTicketAdd = new TicketAddView({
+            var ourTicketOpen = new TicketOpenView({
                 model : ticketModel
             });
 
-            TT.App.layout.content.show(ourTicketAdd);
+            TT.App.layout.content.show(ourTicketOpen);
 
             TT.Communicator.mediator.trigger('message:hideLoadingMask');
         },
