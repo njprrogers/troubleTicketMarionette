@@ -8,9 +8,9 @@ define([
     'models/Ticket',
     'hbs!tmpl/ticket',
     'hbs!tmpl/item/ticketView_tmpl',
-    'hbs!tmpl/ticketOpen_tmpl'
+    'hbs!tmpl/ticketList_tmpl'
 ],
-function( Backbone , Communicator, ticketSearchTmpl, Tickets, TicketEditView,TicketOpenView, TicketModel, ticketTemplate, ticketViewTmpl, ticketOpenTemplate) {
+function( Backbone , Communicator, ticketSearchTmpl, Tickets, TicketEditView,TicketOpenView, TicketModel, ticketTemplate, ticketViewTmpl, ticketListTemplate) {
     'use strict';
 
 	return Backbone.Marionette.Controller.extend({
@@ -142,7 +142,7 @@ function( Backbone , Communicator, ticketSearchTmpl, Tickets, TicketEditView,Tic
                             });
 
                             var CollectionView = Backbone.Marionette.CompositeView.extend({
-                                template: ticketOpenTemplate,
+                                template: ticketListTemplate,
                                 itemView: SingleLink,
                                 itemViewContainer: 'tbody'
                             });
