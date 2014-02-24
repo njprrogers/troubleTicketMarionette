@@ -144,8 +144,50 @@ function( Backbone , Communicator, ticketSearchTmpl, Tickets, TicketEditView,Tic
                             var CollectionView = Backbone.Marionette.CompositeView.extend({
                                 template: ticketListTemplate,
                                 itemView: SingleLink,
-                                itemViewContainer: 'tbody'
-                            });
+                                itemViewContainer: 'tbody',
+
+                                initialize: function(){
+                                    collection.on('reset sort', this.render, this);
+                                },
+                                events: {
+                                    'click thead'         : 'headerClick'
+
+                                },
+                                render: function() {
+                                    console.log('render');
+
+                                    //call super class render
+                                    Backbone.Marionette.CompositeView.prototype.render.call(this);
+
+                                    // Adjust the indicators.  Reset everything to hide the indicator
+                                    this.$el.find('th').attr('class', 'sorting');
+                                    this.$el.find('th#' + this.collection.sortAttribute).addClass('sorting_asc');
+                                    // Now show the correct icon on the correct column
+                                    if (this.collection.sortDirection === 1) {
+                                        this.$el.find('th#' + this.collection.sortAttribute).removeClass('sorting').addClass('sorting_asc');
+                                    } else {
+                                        this.$el.find('th#' + this.collection.sortAttribute).removeClass('sorting').addClass('sorting_desc');
+                                    }
+                                    return this;
+                                },
+                                // the part that actually changes the sort order
+                                headerClick: function( e ) {
+                                    console.log('haderClick');
+                                    var $el = $(e.currentTarget);
+                                    var ns = e.target.id;
+                                    var cs = this.collection.sortAttribute;
+
+                                    // Toggle sort if the current column is sorted
+                                    if (ns === cs) {
+                                        this.collection.sortDirection *= -1;
+                                    } else {
+                                        this.collection.sortDirection = 1;
+                                    }
+
+                                    // Now sort the collection
+                                    this.collection.sortByField(ns);
+                                }
+                             });
                             TT.App.tickCollection = new CollectionView({
                                 collection: collection
                             });
