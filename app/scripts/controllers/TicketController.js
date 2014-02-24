@@ -150,7 +150,7 @@ function( Backbone , Communicator, ticketSearchTmpl, Tickets, TicketEditView,Tic
                                 collection: collection
                             });
                             $('#table-holder').append(TT.App.tickCollection.render().el);
-                            //TT.App.layout.content.show(TT.App.tickCollection);
+                            $('#table-holder').show();
 
                             TT.Communicator.mediator.trigger('message:hideLoadingMask');
                         },

@@ -33,6 +33,18 @@ footer {
   margin: 2em auto;
 }
 
+#form-container {
+  background-color: #333;
+  padding: 2em;
+}
+
+#table-holder{
+  margin: 10px 0 0 0;
+  padding: 2em;
+  background-color: #333;
+  display: none;
+}
+
 /** Bootstrap Dark Modal Styles **/
 .modal-open .modal, .btn:focus {
   outline: none !important;
