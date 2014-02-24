@@ -149,7 +149,8 @@ function( Backbone , Communicator, ticketSearchTmpl, Tickets, TicketEditView,Tic
                             TT.App.tickCollection = new CollectionView({
                                 collection: collection
                             });
-                            TT.App.layout.content.show(TT.App.tickCollection);
+                            $('#table-holder').append(TT.App.tickCollection.render().el);
+                            //TT.App.layout.content.show(TT.App.tickCollection);
 
                             TT.Communicator.mediator.trigger('message:hideLoadingMask');
                         },
