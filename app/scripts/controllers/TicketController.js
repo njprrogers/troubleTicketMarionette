@@ -16,7 +16,7 @@ function( Backbone , Communicator, ticketSearchTmpl, Tickets, TicketEditView,Tic
 	return Backbone.Marionette.Controller.extend({
 
 		initialize: function(  ) {
-			console.log("initialize a Ticketcontroller Controller ");
+			console.log('initialize a Ticketcontroller Controller ');
 		},
 
         displayTicketEdit : function (ticketId) {
@@ -88,7 +88,7 @@ function( Backbone , Communicator, ticketSearchTmpl, Tickets, TicketEditView,Tic
                     console.log('Retrieve ticket '+ ticketId);
 
                     var viewTicket = Backbone.Marionette.ItemView.extend({
-//                        tagName: "#content",
+//                        tagName: '#content',
                         template: ticketViewTmpl
                     });
                     var ourTicketView = new viewTicket({
@@ -113,7 +113,7 @@ function( Backbone , Communicator, ticketSearchTmpl, Tickets, TicketEditView,Tic
             var ticketListPage = Backbone.Marionette.ItemView.extend({
                 template: ticketSearchTmpl,
                 events: {
-                    "click #submit"         : "submit"
+                    'click #submit'         : 'submit'
                 },
                 submit : function (event) {
                     TT.Communicator.mediator.trigger('message:showLoadingMask');
@@ -128,15 +128,15 @@ function( Backbone , Communicator, ticketSearchTmpl, Tickets, TicketEditView,Tic
                             console.log ('success ' +collection+response);
 
                             var SingleLink = Backbone.Marionette.ItemView.extend({
-                                tagName: "tr",
+                                tagName: 'tr',
                                 template: ticketTemplate,
 
 								events: {
-                                    "click .table-action"         : "open"
+                                    'click .table-action'         : 'open'
                                 },
                                 open : function(e, params, params2) {
                                     e.preventDefault();
-    								TT.App.router.navigate("ticket/view/"+this.model.get('id')+'?sourceApplication=cqm', {trigger: true, replace:true});
+    								TT.App.router.navigate('ticket/view/'+this.model.get('id')+'?sourceApplication=cqm', {trigger: true, replace:true});
 
                                 }
                             });
