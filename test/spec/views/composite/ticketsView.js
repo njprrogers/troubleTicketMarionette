@@ -1,26 +1,29 @@
 (function() {
-	'use strict';
+    'use strict';
 
-	var root = this;
+    var root = this;
 
-	root.define([
-		'views/composite/ticketsView'
-		],
-		function( Ticketsview ) {
+    root.define([
+        'collections/Tickets',
+        'views/composite/ticketsView'
+        ],
+        function( TicketsCollection, TicketsView ) {
 
-			describe('Ticketsview Compositeview', function () {
+            describe('Ticketsview Compositeview', function () {
 
-				it('should be an instance of Ticketsview Compositeview', function () {
-					var ticketsView = new Ticketsview();
-					expect( ticketsView ).to.be.an.instanceof( Ticketsview );
-				});
+                it('should be an instance of TicketsView CompositeView', function () {
+                    var ticketsView = new TicketsView({
+                        collection: new TicketsCollection()
+                    });
+                    expect( ticketsView ).to.be.an.instanceof( TicketsView );
+                });
 
-				it('should have more test written', function(){
+                it('should have more test written', function(){
                     //TODO implement me
-					expect( true ).to.be.ok;
-				});
-			});
+                    expect( true ).to.be.ok;
+                });
+            });
 
-		});
+        });
 
 }).call( this );

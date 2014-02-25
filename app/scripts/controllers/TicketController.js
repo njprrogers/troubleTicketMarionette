@@ -1,23 +1,23 @@
 define([
-	'backbone',
+    'backbone',
     'communicator',
     'hbs!tmpl/ticketSearch',
     'collections/Tickets',
+    'views/composite/ticketsView',
     'views/item/ticketEdit',
     'views/item/ticketOpen',
     'models/Ticket',
     'hbs!tmpl/ticket',
-    'hbs!tmpl/item/ticketView_tmpl',
-    'hbs!tmpl/ticketList_tmpl'
+    'hbs!tmpl/item/ticketView_tmpl'
 ],
-function( Backbone , Communicator, ticketSearchTmpl, Tickets, TicketEditView,TicketOpenView, TicketModel, ticketTemplate, ticketViewTmpl, ticketListTemplate) {
+function( Backbone , Communicator, ticketSearchTmpl, Tickets, TicketsView, TicketEditView, TicketOpenView, TicketModel, ticketTemplate, ticketViewTmpl) {
     'use strict';
 
-	return Backbone.Marionette.Controller.extend({
+    return Backbone.Marionette.Controller.extend({
 
-		initialize: function(  ) {
-			console.log('initialize a Ticketcontroller Controller ');
-		},
+        initialize: function(  ) {
+            console.log('initialize a Ticketcontroller Controller ');
+        },
 
         displayTicketEdit : function (ticketId) {
 
@@ -95,8 +95,8 @@ function( Backbone , Communicator, ticketSearchTmpl, Tickets, TicketEditView,Tic
                         model : ticketModel
                     });
 //                     TT.App.layout.regionManager.removeRegion('content');
-// 					TT.App.layout.regionManager.addRegion('content');
-					
+//                    TT.App.layout.regionManager.addRegion('content');
+
                     TT.App.layout.content.show(ourTicketView);
 
                     TT.Communicator.mediator.trigger('message:hideLoadingMask');
@@ -127,70 +127,10 @@ function( Backbone , Communicator, ticketSearchTmpl, Tickets, TicketEditView,Tic
                         success : function (collection, response) {
                             console.log ('success ' +collection+response);
 
-                            var SingleLink = Backbone.Marionette.ItemView.extend({
-                                tagName: 'tr',
-                                template: ticketTemplate,
-
-								events: {
-                                    'click .table-action'         : 'open'
-                                },
-                                open : function(e, params, params2) {
-                                    e.preventDefault();
-    								TT.App.router.navigate('ticket/view/'+this.model.get('id')+'?sourceApplication=cqm', {trigger: true, replace:true});
-
-                                }
-                            });
-
-                            var CollectionView = Backbone.Marionette.CompositeView.extend({
-                                template: ticketListTemplate,
-                                itemView: SingleLink,
-                                itemViewContainer: 'tbody',
-
-                                initialize: function(){
-                                    collection.on('reset sort', this.render, this);
-                                },
-                                events: {
-                                    'click thead'         : 'headerClick'
-
-                                },
-                                render: function() {
-                                    console.log('render');
-
-                                    //call super class render
-                                    Backbone.Marionette.CompositeView.prototype.render.call(this);
-
-                                    // Adjust the indicators.  Reset everything to hide the indicator
-                                    this.$el.find('th').attr('class', 'sorting');
-                                    this.$el.find('th#' + this.collection.sortAttribute).addClass('sorting_asc');
-                                    // Now show the correct icon on the correct column
-                                    if (this.collection.sortDirection === 1) {
-                                        this.$el.find('th#' + this.collection.sortAttribute).removeClass('sorting').addClass('sorting_asc');
-                                    } else {
-                                        this.$el.find('th#' + this.collection.sortAttribute).removeClass('sorting').addClass('sorting_desc');
-                                    }
-                                    return this;
-                                },
-                                // the part that actually changes the sort order
-                                headerClick: function( e ) {
-                                    console.log('haderClick');
-                                    var $el = $(e.currentTarget);
-                                    var ns = e.target.id;
-                                    var cs = this.collection.sortAttribute;
-
-                                    // Toggle sort if the current column is sorted
-                                    if (ns === cs) {
-                                        this.collection.sortDirection *= -1;
-                                    } else {
-                                        this.collection.sortDirection = 1;
-                                    }
-
-                                    // Now sort the collection
-                                    this.collection.sortByField(ns);
-                                }
-                             });
-                            TT.App.tickCollection = new CollectionView({
+                            TT.App.tickCollection = new TicketsView({
                                 collection: collection
                             });
+
                             $('#table-holder').append(TT.App.tickCollection.render().el);
                             $('#table-holder').show();
 
@@ -212,6 +152,6 @@ function( Backbone , Communicator, ticketSearchTmpl, Tickets, TicketEditView,Tic
             TT.App.layout.content.show(new ticketListPage());
             TT.Communicator.mediator.trigger('message:hideLoadingMask');
         }
-	});
+    });
 
 });
