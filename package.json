@@ -56,7 +56,8 @@
         "karma-requirejs": "~0.1.0",
         "karma-coffee-preprocessor": "~0.1.0",
         "karma-phantomjs-launcher": "~0.1.0",
-        "karma-script-launcher": "~0.1.0"
+        "karma-script-launcher": "~0.1.0",
+        "karma-spec-reporter" : "latest"
     },
     "engines": {
         "node": ">=0.8.0"
