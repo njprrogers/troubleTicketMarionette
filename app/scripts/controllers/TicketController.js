@@ -118,12 +118,13 @@ function( Backbone , Communicator, ticketSearchTmpl, Tickets, TicketsView, Ticke
                 submit : function (event) {
                     TT.Communicator.mediator.trigger('message:showLoadingMask');
                     event.preventDefault();
-                    var tickets = new Tickets();
+                    var tickets = new Tickets(),
+                        queryParams = {};
+                    queryParams[$('#key').val()] = $('#keyValue').val();
+                    queryParams.sourceApplication = 'cqm';
+
                     tickets.fetch({
-                        data : {
-                            'sourceApplication' : 'cqm',
-                            'imsi' : $('#imsi').val()
-                        },
+                        data : queryParams,
                         success : function (collection, response) {
                             console.log ('success ' +collection+response);
 

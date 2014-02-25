@@ -1,13 +1,29 @@
 {{!empty TicketviewTmpl template}}
-
 <div class="container">
     <div id="form-container">
         <form>
-            <label for="imsi">Enter IMSI</label>
-            <input type="text" value="" id="imsi"/>
-            <input type="submit" id="submit"/>
+            <div class="row" id="selectForm">
+                <select id="key"  class="form-control">
+                    <option value="imsi">IMSI</option>
+                    <option value="msisdn">MSISDN</option>
+                </select>
+                <input type="text" value="" id="keyValue"/>
+
+                <select id="timePeriod"  class="form-control">
+                    <option value="imsi">Last 30 days</option>
+                    <option value="last30days">Today</option>
+                    <option value="lastWeek">Last Week</option>
+                    <option value="custom">Custom</option>
+                </select>
+
+                <input type="submit" id="submit" class="primary-btn" value="Search" />
+
+            </div>
         </form>
         <div id="errorText"></div>
     </div>
+
+</div>
+<div class="container">
     <div id="table-holder"></div>
 </div>
