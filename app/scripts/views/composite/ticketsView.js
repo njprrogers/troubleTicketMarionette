@@ -20,12 +20,16 @@ function( Backbone, Ticketview, ticketTmpl, ticketsviewTmpl  ) {
             template: ticketTmpl,
 
             events: {
-                'click .table-action'         : 'open'
+                'click td'                    : 'select'
             },
-            open : function(e, params, params2) {
-                e.preventDefault();
-                TT.App.router.navigate('ticket/view/'+this.model.get('id')+'?sourceApplication=cqm', {trigger: true, replace:true});
 
+            select : function(e) {
+                e.preventDefault();
+                if (e.target.className === 'table-action') {
+                    TT.App.router.navigate('ticket/edit/'+this.model.get('id')+'?sourceApplication=cqm', {trigger: true, replace:false});
+                } else {
+                    TT.App.router.navigate('ticket/view/'+this.model.get('id')+'?sourceApplication=cqm', {trigger: true, replace:false});
+                }
             }
         }),
 
@@ -44,7 +48,6 @@ function( Backbone, Ticketview, ticketTmpl, ticketsviewTmpl  ) {
 
         render: function() {
             console.log('render');
-
             //call super class render
             Backbone.Marionette.CompositeView.prototype.render.call(this);
 
