@@ -117,6 +117,7 @@ function( Backbone , Communicator, ticketSearchTmpl, Tickets, TicketsView, Ticke
                 },
                 submit : function (event) {
                     TT.Communicator.mediator.trigger('message:showLoadingMask');
+                    TT.App.router.navigate('ticket/list?sourceApplication=cqm&'+this.$el.find('#key').val()+'='+this.$el.find('#keyValue').val(), {trigger: false, replace:true});
                     event.preventDefault();
                     var tickets = new Tickets(),
                         queryParams = {};
