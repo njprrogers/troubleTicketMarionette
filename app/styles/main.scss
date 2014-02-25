@@ -202,3 +202,7 @@ footer {
   //background-position: 100% 53%, center center;
   //background-repeat: no-repeat, repeat-x;
 }
+table tr:hover {
+  background: #666666;
+  cursor: pointer;
+}
