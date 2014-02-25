@@ -1,5 +1,45 @@
 @import 'sass-bootstrap/lib/bootstrap';
 
+$app-font-path: '/styles/OpenSans/' !default;
+
+$app-font-path-eot: $app-font-path + 'opensans-regular.eot';
+$app-font-path-eotiefix: $app-font-path + 'opensans-regular.eot?#iefix';
+$app-font-path-woff: $app-font-path + 'opensans-regular.woff';
+$app-font-path-ttf: $app-font-path + 'opensans-regular.ttf';
+
+$app-font-path-semibold-eot: $app-font-path + 'opensans-semibold.eot';
+$app-font-path-semibold-eotiefix: $app-font-path + 'opensans-semibold.eot?#iefix';
+$app-font-path-semibold-woff: $app-font-path + 'opensans-semibold.woff';
+$app-font-path-semibold-ttf: $app-font-path + 'opensans-semibold.ttf';
+
+$app-font-path-bold-eot: $app-font-path + 'opensans-bold.eot';
+$app-font-path-bold-eotiefix: $app-font-path + 'opensans-bold.eot?#iefix';
+$app-font-path-bold-woff: $app-font-path + 'opensans-bold.woff';
+$app-font-path-bold-ttf: $app-font-path + 'opensans-bold.ttf';
+
+@font-face {
+  font-family: "Open Sans";
+  src: url($app-font-path-eot);
+  src: url($app-font-path-eotiefix) format('eot'),
+  url($app-font-path-woff) format('woff'),
+  url($app-font-path-ttf) format('truetype')
+}
+@font-face {
+  font-family: "Open Sans semibold";
+  src: url($app-font-path-semibold-eot);
+  src: url($app-font-path-semibold-eotiefix) format('eot'),
+  url($app-font-path-semibold-woff) format('woff'),
+  url($app-font-path-semibold-ttf) format('truetype')
+}
+
+@font-face {
+  font-family: "Open Sans bold";
+  src: url($app-font-path-bold-eot);
+  src: url($app-font-path-bold-eotiefix) format('eot'),
+  url($app-font-path-bold-woff) format('woff'),
+  url($app-font-path-bold-ttf) format('truetype')
+}
+
 .hero-unit {
     margin: 50px auto 0 auto;
     width: 800px;
@@ -9,6 +49,7 @@ body {
   background-color: #525252;
   color: #FFF;
   min-width: 970px!important;
+  font-family: 'Open Sans';
 }
 
 header {
@@ -64,7 +105,12 @@ footer {
   margin: 0;
   padding: 20px;
 }
-
+#form-container h2 {
+  font-size:16px;
+  padding: 20px 0 0 20px;
+  margin-bottom: 0;
+  font-family: 'Open Sans';
+}
 .modal.dark .modal-header {
   background: #2d3032;
   border-bottom: 1px solid #2a2c2e;
@@ -105,6 +151,9 @@ table td,
 table th {
   padding: 5px;
   border: none;
+}
+table th {
+  color: #ccc;
 }
 table td a {
   color: #00acdb;
