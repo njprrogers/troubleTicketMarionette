@@ -1,0 +1,7 @@
+{
+    "env" : "production",
+    "port": 9000,
+    "app": {
+        "name": "TroubleTicket app"
+    }
+}

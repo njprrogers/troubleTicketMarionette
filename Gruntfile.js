@@ -86,25 +86,36 @@ module.exports = function (grunt) {
             }
         },
 
+        karma: {
+            unit: {
+                configFile: 'karma.conf.js',
+//                browsers: ['Chrome'],
+                singleRun: true
+            }
+        },
+
         // express app
         express: {
             options: {
                 // Override defaults here
-                port: '9000'
+                port: '9001'
             },
             dev: {
                 options: {
-                    script: 'server/app.js'
+                    script: 'server/app.js',
+                    port: '9001'
                 }
             },
             prod: {
                 options: {
-                    script: 'server/app.js'
+                    script: 'server/app.js',
+                    port: '9001'
                 }
             },
             test: {
                 options: {
-                    script: 'server/app.js'
+                    script: 'server/app.js',
+                    port: '9001'
                 }
             }
         },
@@ -280,6 +291,21 @@ module.exports = function (grunt) {
                     '.tmp/scripts/templates.js': ['templates/**/*.hbs']
                 }
             }
+        },
+
+        env: {
+            test: {
+                NODE_ENV: 'test'
+            },
+            integration_test: {
+                NODE_ENV: 'integration_test'
+            },
+            dev: {
+                NODE_ENV: 'development'
+            },
+            prod: {
+                NODE_ENV: 'production'
+            }
         }
     });
 
@@ -292,13 +318,14 @@ module.exports = function (grunt) {
 
         // what is this??
         if (target === 'dist') {
-            return grunt.task.run(['build', 'open', 'connect:dist:keepalive']);
+            return grunt.task.run(['end:prod','build', 'open', 'connect:dist:keepalive']);
         }
 
         grunt.option('force', true);
 
         grunt.task.run([
             'clean:server',
+            'env:dev',
             'compass:server',
             'connect:testserver',
             'express:dev',
@@ -310,14 +337,25 @@ module.exports = function (grunt) {
     // todo fix these
     grunt.registerTask('test', [
         'clean:server',
+        'env:test',
         'createDefaultTemplate',
         'handlebars',
         'compass',
         'connect:testserver',
-        'exec:mocha'
+        'exec:mocha',
+        'karma'
+    ]);
+
+    grunt.registerTask('e2e-test', [
+        'clean:server',
+        'env:integration_test',
+        'compass:server',
+        'express:test',
+        'karma'
     ]);
 
     grunt.registerTask('build', [
+        'env:prod',
         'createDefaultTemplate',
         'handlebars',
         'compass:dist',

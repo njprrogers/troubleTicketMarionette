@@ -1,0 +1,7 @@
+{
+    "env" : "integration_test",
+    "port": 9001,
+    "app": {
+        "name": "TroubleTicket app"
+    }
+}

@@ -9,12 +9,12 @@ var baucis = require('baucis');
 //var socketIO = require('socket.io');
 //var mongoose = require('mongoose');
 var httpProxy = require('http-proxy');
-
+var config = require('../config/config');
 
 var app = express();
 
 app.configure(function () {
-    app.set('port', 9000);
+    app.set('port', config.port);
 
     app.set('view engine', 'handlebars');
     app.set('views', __dirname + '../app/scripts/views');
@@ -80,7 +80,7 @@ app.post('/troubleticketapi/api/v1/tickets/*', function (req, res) {
 });
 // start server
 http.createServer(app).listen(app.get('port'), function () {
-    console.log('Express App started!');
+    console.log('Express App started! Port: '+app.get('port') + ' env: '+ config.env);
 });
 
 
