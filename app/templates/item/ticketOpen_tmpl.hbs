@@ -1,40 +1,41 @@
+<div class="container">
+    <div class="row">
+        <div class="span6">
+            <p>IMSI : {{imsi}}</p>
+            <p>PHONE NUMBER : {{msisdn}}</p>
+        </div>
+        <div class="span6">
+            <p>CUSTOMER NAME : {{customerName}}</p>
+            <p>PLAN : {{plan}}</p>
+        </div>
+        <div class="span6">
+            <p>BUSINESS NAME : {{businessName}}</p>
+            <p>AVGBILL : {{vgBill}}</p>
+        </div>
+        <div class="span6">
+            <p>TYPE : {{type}}</p>
+            <p>TARIFF : {{tariff}}</p>
+        </div>
+        <div class="span12">
+            <p>ISSUE TIME PERIOD : FROM {{startTime}} TO {{endTime}}</p>
+        </div>
+    </div>
 
-<div class="row">
-    <div class="span6">
-        <p>IMSI : {{imsi}}</p>
-        <p>PHONE NUMBER : {{msisdn}}</p>
-    </div>
-    <div class="span6">
-        <p>CUSTOMER NAME : {{customerName}}</p>
-        <p>PLAN : {{plan}}</p>
-    </div>
-    <div class="span6">
-        <p>BUSINESS NAME : {{businessName}}</p>
-        <p>AVGBILL : {{vgBill}}</p>
-    </div>
-    <div class="span6">
-        <p>TYPE : {{type}}</p>
-        <p>TARIFF : {{tariff}}</p>
-    </div>
-    <div class="span12">
-        <p>ISSUE TIME PERIOD : FROM {{startTime}} TO {{endTime}}</p>
-    </div>
+    <form id="ticketOpen">
+        <p>
+            <label for="title">Title</label>
+            <input id="title" value="{{title}}" name="title" />
+        </p>
+
+        <p>
+            <label for="location">Location</label>
+            <input id="location" value="http://example.com" name="location" />
+        </p>
+        <p>
+            <label for="description">Description</label>
+            <textarea id="description" value="{{description}}" name="description">http://www.example.com</textarea>
+        </p>
+        <a href="#" id="cancel">Cancel</a>
+        <input type="submit" id="submit-open" value="Done" />
+    </form>
 </div>
-
-<form id="ticketOpen">
-    <p>
-        <label for="title">Title</label>
-        <input id="title" value="{{title}}" name="title" />
-    </p>
-
-    <p>
-        <label for="location">Location</label>
-        <input id="location" value="http://example.com" name="location" />
-    </p>
-    <p>
-        <label for="description">Description</label>
-        <textarea id="description" value="{{description}}" name="description">http://www.example.com</textarea>
-    </p>
-    <a href="#" id="cancel">Cancel</a>
-    <input type="submit" id="submit-open" value="Done" />
-</form>
