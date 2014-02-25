@@ -94,6 +94,15 @@ module.exports = function (grunt) {
             }
         },
 
+        casperjs: {
+            options: {
+                async: {
+                    parallel: true
+                }
+            },
+            files: ['test/casperjs/**/*.js']
+        },
+
         // express app
         express: {
             options: {
@@ -351,7 +360,8 @@ module.exports = function (grunt) {
         'env:integration_test',
         'compass:server',
         'express:test',
-        'karma'
+        'karma',
+        'casperjs'
     ]);
 
     grunt.registerTask('build', [
