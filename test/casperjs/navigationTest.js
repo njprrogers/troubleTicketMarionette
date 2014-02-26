@@ -6,8 +6,8 @@ casper.test.begin('TroubleTicket search retrieves 250 or more results', 3, funct
         this.echo('Current url: ' + this.getCurrentUrl());
         this.wait(1000, function() {
             test.assertExists('#submit', 'submit button exist');
-            this.sendKeys('#imsi', '100000000000001');
-            test.assertExists('#imsi', 'imsi inputfield exist');
+            test.assertExists('#keyValue', 'imsi inputfield exist');
+            this.sendKeys('#keyValue', '100000000000001');
             this.click('#submit');
         });
 

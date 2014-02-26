@@ -41,7 +41,7 @@ define([
                 template: Welcome_tmpl,
                 regions: {
                     header : '#header',
-                    content: "#content",
+                    content: '#content',
                     footer : 'footer'
                 }
             });
@@ -50,7 +50,6 @@ define([
         });
 
         TT.App.on("initialize:after", function () {
-debugger
             if (Backbone.history) {
                 console.log('Initialize history');
                 Backbone.history.start();
