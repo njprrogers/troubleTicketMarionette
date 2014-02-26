@@ -267,6 +267,18 @@ module.exports = function (grunt) {
         },
 
         copy: {
+            fontsTmp: {
+                files: [
+                    {
+                        expand: true,
+                        cwd: 'app/styles/fonts/OpenSans/',
+                        nonull: true,
+                        dest: '.tmp/styles/fonts/OpenSans/',
+                        flatten: true,
+                        src: '**'
+                    }
+                ]
+            },
             dist: {
                 files: [{
                     expand: true,
@@ -336,6 +348,7 @@ module.exports = function (grunt) {
             'clean:server',
             'env:dev',
             'compass:server',
+            'copy:fontsTmp',
             'connect:testserver',
             'express:dev',
             'exec',
