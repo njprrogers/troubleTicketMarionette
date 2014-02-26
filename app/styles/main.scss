@@ -206,3 +206,14 @@ table tr:hover {
   background: #666666;
   cursor: pointer;
 }
+.dark-container {
+  background: #333333;
+}
+.dark-container .row {
+  margin: 0;
+}
+.dark-container .label {
+  text-align: right;
+  display: block;
+  width: 120px;
+}
