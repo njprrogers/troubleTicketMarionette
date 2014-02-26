@@ -176,8 +176,12 @@ input {
   border: none;
   height: 32px;
   width: auto;
-  padding: 0 12px;
   text-align: center;
+}
+a.primary-btn {
+  display: block;
+  //width: 140px;
+  padding: 0 12px;
 }
 footer {
   padding: 50px 10px
@@ -206,14 +210,43 @@ table tr:hover {
   background: #666666;
   cursor: pointer;
 }
-.dark-container {
+.view-container {
   background: #333333;
 }
-.dark-container .row {
+.view-container .row {
   margin: 0;
+  padding: 20px 0;
 }
-.dark-container .label {
+.view-container .label {
   text-align: right;
   display: block;
   width: 120px;
+}
+.view-container .col-md-2 {
+  color: #ccc;
+  text-align: right;
+  font-size: 12px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+.view-container .col-md-10,
+.view-container .col-md-4,
+{
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+.button-row a {
+  float: left;
+  margin-right: 10px;
+  height: 32px;
+  line-height: 32px;
+  display: block;
+}
+.breadcrumbs .row {
+  padding-bottom: 10px;
+  margin-top: -10px;
+}
+.breadcrumbs .row a {
+  color: #fff;
+  text-decoration: underline;
 }

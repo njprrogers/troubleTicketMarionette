@@ -1,47 +1,68 @@
 {{!empty TicketviewTmpl template}}
-
-
-<div class="container dark-container">
+<div class="container breadcrumbs">
     <div class="row">
-        <div class="col-md-6">
-            <div class="col-sm-12">
-                IMSI :
-            </div>
-            <div class="col-sm-12">
-                {{imsi}}
-            </div>
-            <div class="col-sm-12">
-                UPDATED :
-            </div>
-            <div class="col-sm-12">
-                {{updated}}
-            </div>
-        </div>
-        <div class="col-md-6">
-            <p>MSISDN : {{msisdn}}</p>
-            <p>CREATED : {{created}}</p>
+        <div class="col-md-12">
+            <a href="#ticket/list?sourceApplication=cqm">Back to Search</a>
         </div>
     </div>
-
-    <hr />
-    <div class="row">
-        <div class="span12">
-            <p>ISSUE TIME PERIOD : FROM {{startTime}} TO {{endTime}}</p>
-            <p>ISSUE TITLE : {{title}}</p>
-            <p>ISSUE LOCATION : {{location}}</p>
-            <p>STATUS : {{status}}</p>
-            <p>DESCRIPTION : {{description}}</p>
-            <p>ATTACHMENTS : </p>
-            {{#each attachments}}
-                <p> {{filename}}</p>
-            {{/each}}
-        </div>
-    </div>
-
-    <a href="#ticket/list?sourceApplication=cqm">Go to Search</a>
-    <a href="#ticket/edit/{{id}}?sourceApplication=cqm">Edit this ticket</a>
 </div>
+<div class="container view-container">
+    <div class="row">
+        <div class="col-md-2">
+            IMSI :
+        </div>
+        <div class="col-md-4">
+            {{imsi}}
+        </div>
 
-<div class="container">
+        <div class="col-md-2">
+            UPDATED :
+        </div>
+        <div class="col-md-4">
+            {{updated}}
+        </div>
+        <div class="col-md-2">
+            MSISDN :
+        </div>
+        <div class="col-md-4">
+            {{msisdn}}
+        </div>
+        <div class="col-md-2">
+            CREATED :
+        </div>
+        <div class="col-md-4">
+            {{created}}
+        </div>
+    </div>
 
+    <hr/>
+    <div class="row">
+        <div class="col-md-2">ISSUE TIME PERIOD :</div>
+        <div class="col-md-10">FROM {{startTime}} TO {{endTime}}</div>
+
+        <div class="col-md-2">ISSUE TITLE :</div>
+        <div class="col-md-10">{{title}}</div>
+
+        <div class="col-md-2">ISSUE LOCATION :</div>
+        <div class="col-md-10">{{location}}</div>
+
+        <div class="col-md-2">STATUS :</div>
+        <div class="col-md-10">{{status}}</div>
+
+        <div class="col-md-2">DESCRIPTION :</div>
+        <div class="col-md-10">{{description}}</div>
+
+        <div class="col-md-2">ATTACHMENTS :</div>
+        {{#each attachments}}
+            <div class="col-md-10">{{filename}}</div>
+        {{/each}}
+    </div>
+    <div class="row button-row">
+        <div class="col-md-8"></div>
+
+        <div class="col-md-4">
+            <a href="#ticket/list?sourceApplication=cqm">Back to Search</a>
+            <a href="#ticket/edit/{{id}}?sourceApplication=cqm" class="primary-btn">Edit ticket</a>
+        </div>
+    </div>
 </div>
