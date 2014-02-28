@@ -1,0 +1,233 @@
+@font-face {
+  font-family: "Open Sans";
+  src: url($app-font-path-eot);
+  src: url($app-font-path-eotiefix) format('eot'),
+  url($app-font-path-woff) format('woff'),
+  url($app-font-path-ttf) format('truetype')
+}
+@font-face {
+  font-family: "Open Sans semibold";
+  src: url($app-font-path-semibold-eot);
+  src: url($app-font-path-semibold-eotiefix) format('eot'),
+  url($app-font-path-semibold-woff) format('woff'),
+  url($app-font-path-semibold-ttf) format('truetype')
+}
+
+@font-face {
+  font-family: "Open Sans bold";
+  src: url($app-font-path-bold-eot);
+  src: url($app-font-path-bold-eotiefix) format('eot'),
+  url($app-font-path-bold-woff) format('woff'),
+  url($app-font-path-bold-ttf) format('truetype')
+}
+
+.hero-unit {
+  margin: 50px auto 0 auto;
+  width: 800px;
+}
+
+body {
+  background-color: #525252;
+  color: #FFF;
+  min-width: 970px!important;
+  font-family: 'Open Sans';
+}
+
+header {
+  background-color: #333;
+  color: #FFF;
+  padding-bottom: 10px;
+}
+
+footer {
+  background-color: #333;
+  color: #FFF;
+}
+
+.modal-content {
+  background-color: #333;
+  color: #FFF;
+}
+
+#footer {
+  height: 5em;
+}
+
+#content {
+  //margin: 2em auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.container {
+  width: 980px;
+}
+
+#form-container {
+  background-color: #333;
+}
+
+#table-holder{
+  margin: 10px 0 0 0;
+  padding: 20px;
+  background-color: #333;
+  display: none;
+}
+
+/** Bootstrap Dark Modal Styles **/
+.modal-open .modal, .btn:focus {
+  outline: none !important;
+}
+
+.modal.dark { background-color: #2d3032; }
+.modal.dark .modal-body {
+  background: #40464b;
+}
+#form-container .row {
+  margin: 0;
+  padding: 20px;
+}
+#form-container h2 {
+  font-size:16px;
+  padding: 20px 0 0 20px;
+  margin-bottom: 0;
+  font-family: 'Open Sans';
+}
+.modal.dark .modal-header {
+  background: #2d3032;
+  border-bottom: 1px solid #2a2c2e;
+}
+.modal.dark .modal-header h1, .modal.dark .modal-header h2, .modal.dark .modal-header h3, .modal.dark .modal-header h4 {
+  color: #ccc;
+}
+
+.modal.dark .modal-footer {
+  background: #2d3032;
+  border-top: 1px solid #2a2c2e;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+
+table.table {
+  clear: both;
+  margin-bottom: 6px !important;
+  max-width: none !important;
+  border: none;
+}
+
+table.table thead .sorting,
+table.table thead .sorting_asc,
+table.table thead .sorting_desc,
+table.table thead .sorting_asc_disabled,
+table.table thead .sorting_desc_disabled {
+  cursor: pointer;
+  *cursor: hand;
+}
+
+table.table thead .sorting { background: url('../images/sort_both.png') no-repeat center right; }
+table.table thead .sorting_asc { background: url('../images/sort_asc.png') no-repeat center right; }
+table.table thead .sorting_desc { background: url('../images/sort_desc.png') no-repeat center right; }
+table.table > tbody > tr > td { border-top: none}
+table td,
+table th {
+  padding: 5px;
+  border: none;
+}
+table th {
+  color: #ccc;
+}
+table td a {
+  color: #00acdb;
+}
+table td a.table-action {
+  background: url('../images/edit.png') no-repeat;
+  display: block;
+  width : 13px;
+  height: 13px;
+}
+input {
+  background: #333;
+  color: #fff;
+  border: 1px solid #666;
+  padding: 6px 5px;
+}
+.primary-btn {
+  color: white;
+  background: #00acdb;
+  border: none;
+  height: 32px;
+  width: auto;
+  text-align: center;
+}
+a.primary-btn {
+  display: block;
+  //width: 140px;
+  padding: 0 12px;
+}
+footer {
+  padding: 50px 10px
+}
+#selectForm input,
+#selectForm select {
+  margin-right: 10px;
+  float: left;
+}
+#selectForm select {
+  background: #666;
+  border-radius: 0;
+  //-webkit-appearance: none;
+  -webkit-border-radius: 0px;
+  border: none;
+  color: #fff;
+  height: 32px;
+  width: 140px;
+  padding-right: 4px;
+  //background: #666 url('../images/dropdown-arrow.png.png') no-repeat right;
+  //background: url(../images/dropdown-arrow.png.png),  url(../images/dropdown-bg.png);
+  //background-position: 100% 53%, center center;
+  //background-repeat: no-repeat, repeat-x;
+}
+table tr:hover {
+  background: #666666;
+  cursor: pointer;
+}
+.view-container {
+  background: #333333;
+}
+.view-container .row {
+  margin: 0;
+  padding: 20px 0;
+}
+.view-container .label {
+  text-align: right;
+  display: block;
+  width: 120px;
+}
+.view-container .col-md-2 {
+  color: #ccc;
+  text-align: right;
+  font-size: 12px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+.view-container .col-md-10,
+.view-container .col-md-4,
+{
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+.button-row a {
+  float: left;
+  margin-right: 10px;
+  height: 32px;
+  line-height: 32px;
+  display: block;
+}
+.breadcrumbs .row {
+  padding-bottom: 10px;
+  margin-top: -10px;
+}
+.breadcrumbs .row a {
+  color: #fff;
+  text-decoration: underline;
+}

@@ -1,0 +1,16 @@
+$app-font-path: '/styles/fonts/OpenSans/' !default;
+
+$app-font-path-eot: $app-font-path + 'opensans-regular.eot';
+$app-font-path-eotiefix: $app-font-path + 'opensans-regular.eot?#iefix';
+$app-font-path-woff: $app-font-path + 'opensans-regular.woff';
+$app-font-path-ttf: $app-font-path + 'opensans-regular.ttf';
+
+$app-font-path-semibold-eot: $app-font-path + 'opensans-semibold.eot';
+$app-font-path-semibold-eotiefix: $app-font-path + 'opensans-semibold.eot?#iefix';
+$app-font-path-semibold-woff: $app-font-path + 'opensans-semibold.woff';
+$app-font-path-semibold-ttf: $app-font-path + 'opensans-semibold.ttf';
+
+$app-font-path-bold-eot: $app-font-path + 'opensans-bold.eot';
+$app-font-path-bold-eotiefix: $app-font-path + 'opensans-bold.eot?#iefix';
+$app-font-path-bold-woff: $app-font-path + 'opensans-bold.woff';
+$app-font-path-bold-ttf: $app-font-path + 'opensans-bold.ttf';
