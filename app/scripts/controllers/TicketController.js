@@ -1,7 +1,6 @@
 define([
     'backbone',
     'communicator',
-    'hbs!tmpl/ticketSearch',
     'collections/Tickets',
     'views/composite/ticketsView',
     'views/item/ticketEdit',
@@ -10,7 +9,7 @@ define([
     'hbs!tmpl/ticket',
     'hbs!tmpl/item/ticketView_tmpl'
 ],
-function( Backbone , Communicator, ticketSearchTmpl, Tickets, TicketsView, TicketEditView, TicketOpenView, TicketModel, ticketTemplate, ticketViewTmpl) {
+function( Backbone , Communicator, Tickets, TicketsView, TicketEditView, TicketOpenView, TicketModel, ticketTemplate, ticketViewTmpl) {
     'use strict';
 
     return Backbone.Marionette.Controller.extend({
@@ -112,52 +111,6 @@ function( Backbone , Communicator, ticketSearchTmpl, Tickets, TicketsView, Ticke
             require([ 'modules/TicketSearch' ], function(module) {
                 console.log('callback ticketsearch module' + module);
             });
-
-//            TT.App.Communicator.mediator.trigger('message:showLoadingMask');
-//
-//            var ticketListPage = Backbone.Marionette.ItemView.extend({
-//                template: ticketSearchTmpl,
-//                events: {
-//                    'click #submit'         : 'submit'
-//                },
-//                submit : function (event) {
-//                    TT.App.Communicator.mediator.trigger('message:showLoadingMask');
-//                    TT.App.router.navigate('ticket/list?sourceApplication=cqm&'+this.$el.find('#key').val()+'='+this.$el.find('#keyValue').val(), {trigger: false, replace:true});
-//                    event.preventDefault();
-//                    var tickets = new Tickets(),
-//                        queryParams = {};
-//                    queryParams[$('#key').val()] = $('#keyValue').val();
-//                    queryParams.sourceApplication = 'cqm';
-//
-//                    tickets.fetch({
-//                        data : queryParams,
-//                        success : function (collection, response) {
-//                            console.log ('success ' +collection+response);
-//
-//                            TT.App.tickCollection = new TicketsView({
-//                                collection: collection
-//                            });
-//
-//                            $('#table-holder').append(TT.App.tickCollection.render().el);
-//                            $('#table-holder').show();
-//
-//                            TT.App.Communicator.mediator.trigger('message:hideLoadingMask');
-//                        },
-//                        error : function (params, response) {
-//        //                var responseText = JSON.parse(response.responseText);
-//        //                $('#errorText').text(responseText.validationErrors[0].errorCode + ' ' + responseText.validationErrors[0].developerMessage);
-//        //                alert('there has been a'+ response.status +' error');
-//                            console.log(response);
-//
-//                            console.log ('error ' +params + JSON.stringify(response));
-//                        }
-//                    });
-//
-//                }
-//            });
-//
-//            TT.App.layout.content.show(new ticketListPage());
-//            TT.App.Communicator.mediator.trigger('message:hideLoadingMask');
         }
     });
 
