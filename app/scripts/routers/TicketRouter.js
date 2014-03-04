@@ -38,7 +38,7 @@ define([
 
             before: function( route, params ) {
                 console.log('before route');
-                //TT.Communicator.mediator.trigger('message:hideError');
+                //TT.App.Communicator.mediator.trigger('message:hideError');
             },
 
             after: function( route, params ) {
@@ -47,7 +47,7 @@ define([
 
             defaultRoute: function (params) {
                 console.log('Default ticket route');
-                TT.Communicator.mediator.trigger('message:showError', 'Error' ,'No source application name given.');
+                TT.App.Communicator.mediator.trigger('message:showError', 'Error' ,'No source application name given.');
             },
             
             openTicket: function (params) {

@@ -41,7 +41,7 @@ function( Backbone, TicketOpenTmpl  ) {
                             TT.App.router.navigate('ticket/view/'+model.get('id')+'?sourceApplication=cqm', {trigger: true, replace:true});
                         };
 
-                        TT.Communicator.mediator.trigger('message:showError','Ticket opened','Ticket #'+model.get('id')+' was opened and added to the ticketing system',okCallback);
+                        TT.App.Communicator.mediator.trigger('message:showError','Ticket opened','Ticket #'+model.get('id')+' was opened and added to the ticketing system',okCallback);
                     }
                 });
 

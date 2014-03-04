@@ -30,7 +30,7 @@ define([
 
             Communicator.mediator.trigger("APP:START");
 
-            TT.Communicator = Communicator;
+            TT.App.Communicator = Communicator;
 
             TT.App.router = new Router();
 

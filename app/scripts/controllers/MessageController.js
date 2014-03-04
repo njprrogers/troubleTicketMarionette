@@ -15,10 +15,10 @@ define([
             initialize: function () {
                 console.log("initialize a MessageController");
 
-                TT.Communicator.mediator.on("message:showLoadingMask", this.showLoadingMask);
-                TT.Communicator.mediator.on("message:hideLoadingMask", this.hideLoadingMask);
-                TT.Communicator.mediator.on("message:showError", this.errorMessage);
-                TT.Communicator.mediator.on("message:hideError", this.hideErrorMessage);
+                TT.App.Communicator.mediator.on("message:showLoadingMask", this.showLoadingMask);
+                TT.App.Communicator.mediator.on("message:hideLoadingMask", this.hideLoadingMask);
+                TT.App.Communicator.mediator.on("message:showError", this.errorMessage);
+                TT.App.Communicator.mediator.on("message:hideError", this.hideErrorMessage);
             },
 
             errorMessage: function (title, message, okCallbackFn, okCallbackScope, okCallbackParams, cancelCallbackFn, cancelCallbackScope, cancelCallbackParams) {
