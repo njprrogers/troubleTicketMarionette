@@ -15,13 +15,14 @@ define([
 
         var myModule = App.module('TicketSearch', function (TicketSearch, MyApp, Backbone, Marionette, $, _) {
 
-            this.startWithParent = false;
+            TicketSearch.startWithParent = false;
+
 
             TicketSearch.addInitializer(function () {
-                TicketSearch.show();
+                //TicketSearch.show();
             });
 
-            this.show = function () {
+            TicketSearch.show = function () {
                 console.log('hello module');
                 MyApp.Communicator.mediator.trigger('message:showLoadingMask');
 

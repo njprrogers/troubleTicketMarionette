@@ -53,9 +53,12 @@
         <div class="col-md-10">{{description}}&nbsp;</div>
 
         <div class="col-md-2">ATTACHMENTS :</div>
-        {{#each attachments}}
-            <div class="col-md-10">{{filename}}</div>
-        {{/each}}
+        <div class="col-md-10">
+            {{#each attachments}}
+                {{filename}}
+                <br/>
+            {{/each}}
+        </div>
     </div>
 
     <hr/>

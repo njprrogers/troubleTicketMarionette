@@ -43,6 +43,7 @@ function( Backbone , Communicator) {
             require([ 'modules/TicketSearch' ], function(module) {
                 console.log('callback ticketsearch module' + module);
                 module.start();
+                module.show();
             });
         }
     });

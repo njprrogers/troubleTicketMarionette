@@ -41,10 +41,15 @@ app.get('/', function (req, res) {
 
 var proxy = httpProxy.createProxyServer({});
 
+proxy.on ('error', function(e, req, res) {
+    console.log('Proxy error: '+ e);
+    res.end();
+});
+
 app.get('/troubleticketapi/api/v1/tickets', function (req, res) {
 
     var target = 'http://dub-vcd-vms5:8090';
-    console.log('Tickets API call, redirecto to ' + target);
+    console.log('Tickets API call, redirect to to ' + target);
 
     proxy.web(req, res, {
         target: target
@@ -54,7 +59,7 @@ app.get('/troubleticketapi/api/v1/tickets', function (req, res) {
 app.get('/troubleticketapi/api/v1/tickets/*', function (req, res) {
 
     var target = 'http://dub-vcd-vms5:8090';
-    console.log('Tickets API call, redirecto to ' + target);
+    console.log('Tickets API call, redirect to to ' + target);
 
     proxy.web(req, res, {
         target: target
@@ -63,7 +68,7 @@ app.get('/troubleticketapi/api/v1/tickets/*', function (req, res) {
 app.put('/troubleticketapi/api/v1/tickets/*', function (req, res) {
 
     var target = 'http://dub-vcd-vms5:8090';
-    console.log('Tickets API call, redirecto to ' + target);
+    console.log('Tickets API call, redirect to to ' + target);
 
     proxy.web(req, res, {
         target: target
@@ -72,7 +77,7 @@ app.put('/troubleticketapi/api/v1/tickets/*', function (req, res) {
 app.post('/troubleticketapi/api/v1/tickets/*', function (req, res) {
 
     var target = 'http://dub-vcd-vms5:8090';
-    console.log('Tickets API call, redirecto to ' + target);
+    console.log('Tickets API call, redirect to to ' + target);
 
     proxy.web(req, res, {
         target: target
