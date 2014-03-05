@@ -1,0 +1,8 @@
+{"attachments": [
+    {
+        "id": "554068033",
+        "filename": "test.txt",
+        "mimetype": "plain/text",
+        "contentURL": "http://localhost:9000/troubleticketapi/api/v1/tickets/17351/attachments/554068033/test.txt?sourceApplication=cqm"
+    }
+], "created": "2014-01-09T14:37:42", "description": "Here is some description of the problem", "endTime": "2013-11-08T10:00:00", "id": "17351", "imsi": "100000000000001", "location": "Location location", "msisdn": "0871234567", "sourceApplication": "cqm", "startTime": "2013-11-08T00:00:00", "status": "closed", "title": "Selenium test ticket for view", "updated": "2014-01-17T18:02:08"}
