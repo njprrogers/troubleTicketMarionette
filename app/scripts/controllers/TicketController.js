@@ -1,15 +1,13 @@
 define([
     'backbone',
     'communicator',
-    'collections/Tickets',
-    'views/composite/ticketsView',
     'views/item/ticketEdit',
     'views/item/ticketOpen',
     'models/Ticket',
     'hbs!tmpl/ticket',
     'hbs!tmpl/item/ticketView_tmpl'
 ],
-function( Backbone , Communicator, Tickets, TicketsView, TicketEditView, TicketOpenView, TicketModel, ticketTemplate, ticketViewTmpl) {
+function( Backbone , Communicator, TicketEditView, TicketOpenView, TicketModel, ticketTemplate, ticketViewTmpl) {
     'use strict';
 
     return Backbone.Marionette.Controller.extend({

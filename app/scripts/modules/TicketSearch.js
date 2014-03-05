@@ -5,17 +5,19 @@ define([
     'hbs',
     'handlebars',
     'application',
-    'hbs!tmpl/ticketSearch'
+    'hbs!tmpl/ticketSearch',
+    'collections/Tickets',
+    'views/composite/ticketsView'
 ],
 
-    function (Backbone, Communicator, Marionette, hbs, handlebars, App, ticketSearchTmpl) {
+    function (Backbone, Communicator, Marionette, hbs, handlebars, App, ticketSearchTmpl, Tickets, TicketsView) {
         'use strict';
 
         var myModule = App.module('TicketSearch', function (TicketSearch, MyApp, Backbone, Marionette, $, _) {
 
             this.startWithParent = false;
 
-            TicketSearch.addInitializer(function (data) {
+            TicketSearch.addInitializer(function () {
                 TicketSearch.show();
             });
 
