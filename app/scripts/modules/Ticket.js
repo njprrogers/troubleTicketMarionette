@@ -16,6 +16,8 @@ define([
 
             TicketModule.displayTicketOpen = function () {
 
+                MyApp.Communicator.mediator.trigger('message:showLoadingMask');
+
                 var ticketModel = new TicketModel({
                     imsi:'123456789123456',
                     msisdn: '123456789123456',
@@ -75,6 +77,8 @@ define([
             };
 
             TicketModule.displayTicketEdit  = function(ticketId) {
+
+                MyApp.Communicator.mediator.trigger('message:showLoadingMask');
 
                 var ticket = new TicketModel({
                     id:ticketId
