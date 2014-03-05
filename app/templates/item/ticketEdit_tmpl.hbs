@@ -1,45 +1,74 @@
 {{!empty TicketeditTmpl template}}
-<div class="container">
+<div class="container view-container">
     <div class="row">
-        <div class="span6">
-            <p>IMSI : {{imsi}}</h2>
-            <p>UPDATED : {{updated}}</h2>
+        <div class="col-md-2">
+            IMSI :
         </div>
-        <div class="span6">
-            <p>MSISDN : {{msisdn}}</p>
-            <p>CREATED : {{created}}</p>
+        <div class="col-md-4">
+            {{imsi}}&nbsp;
         </div>
-        <div class="span12">
-            <p>ISSUE TIME PERIOD : FROM {{startTime}} TO {{endTime}}</p>
+
+        <div class="col-md-2">
+            UPDATED :
+        </div>
+        <div class="col-md-4">
+            {{updated}}&nbsp;
+        </div>
+        <div class="col-md-2">
+            MSISDN :
+        </div>
+        <div class="col-md-4">
+            {{msisdn}}&nbsp;
+        </div>
+        <div class="col-md-2">
+            CREATED :
+        </div>
+        <div class="col-md-4">
+            {{created}}&nbsp;
         </div>
     </div>
 
+    <hr/>
+
     <form id="ticketEdit">
-        <p>
-            <label for="title">Title</label>
-            <input id="title" value="{{title}}" name="title" />
-        </p>
+        <div class="row">
 
-        <p>
-            <label for="location">Location</label>
-            <input id="location" value="{{location}}" name="location" />
-        </p>
-        <p>
-            <label for="status">Status</label>
-            <select id="status">
-                <option value="open">Open</option>
-                <option value="pending">Pending</option>
-                <option value="solved">Solved</option>
-            </select>
-        </p>
-        <p>
-            <label for="description">Description</label>
-            <textarea id="description" value="{{description}}" name="description">{{description}}</textarea>
-        </p>
-        <a href="#" id="cancel">Cancel</a>
-        <input type="submit" id="submit-edit" value="Done" />
+
+            <div class="col-md-2">ISSUE TIME PERIOD :</div>
+            <div class="col-md-10">FROM {{startTime}} TO {{endTime}}</div>
+
+
+            <div class="col-md-2">ISSUE TITLE :</div>
+            <div class="col-md-10"><input class="width-100-percent" id="title" value="{{title}}" name="title"/></div>
+
+            <div class="col-md-2">LOCATION :</div>
+            <div class="col-md-10"><input class="width-100-percent" id="location" value="{{location}}" name="location"/>
+            </div>
+
+            <div class="col-md-2">STATUS :</div>
+            <div class="col-md-10">
+                <select id="status" class="width-100-percent">
+                    <option value="open">Open</option>
+                    <option value="pending">Pending</option>
+                    <option value="solved">Solved</option>
+                </select>
+            </div>
+
+            <div class="col-md-2">DESCRIPTION :</div>
+            <div class="col-md-10"><textarea class="width-100-percent" id="description" value="{{description}}"
+                                             name="description"/></div>
+        </div>
+        <hr/>
+
+        <div class="row button-row">
+            <div class="col-md-9"></div>
+
+            <div class="col-md-3">
+                <a href="#ticket/view/{{id}}?sourceApplication=cqm">Cancel</a>
+                <input type="submit" id="submit-edit" class="primary-btn" value="Done"/>
+            </div>
+        </div>
+
+
     </form>
-
-
-
 </div>

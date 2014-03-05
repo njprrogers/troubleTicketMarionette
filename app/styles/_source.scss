@@ -151,6 +151,20 @@ input {
   border: 1px solid #666;
   padding: 6px 5px;
 }
+textarea {
+  background: #333;
+  color: #fff;
+  border: 1px solid #666;
+  padding: 6px 5px;
+}
+
+select {
+  background: #333;
+  color: #fff;
+  border: 1px solid #666;
+  padding: 6px 5px;
+}
+
 .primary-btn {
   color: white;
   background: #00acdb;
@@ -230,4 +244,8 @@ table tr:hover {
 .breadcrumbs .row a {
   color: #fff;
   text-decoration: underline;
+}
+
+.width-100-percent {
+  width: 100%;
 }
