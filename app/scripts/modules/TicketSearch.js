@@ -13,6 +13,8 @@ define([
 
         var myModule = App.module('TicketSearch', function (TicketSearch, MyApp, Backbone, Marionette, $, _) {
 
+            this.startWithParent = false;
+
             TicketSearch.addInitializer(function (data) {
                 TicketSearch.show();
             });

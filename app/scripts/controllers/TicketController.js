@@ -110,6 +110,7 @@ function( Backbone , Communicator, Tickets, TicketsView, TicketEditView, TicketO
 
             require([ 'modules/TicketSearch' ], function(module) {
                 console.log('callback ticketsearch module' + module);
+                module.start();
             });
         }
     });
