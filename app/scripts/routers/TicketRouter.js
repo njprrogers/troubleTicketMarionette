@@ -9,48 +9,48 @@ define([
     function (Backbone, Controller, Ticket, routerFilter) {
         'use strict';
 
-        var getController = function() {
+        var getController = function () {
 
-            if(!TT.App.Controllers['ticketController'] ) {
+            if (!TT.App.Controllers['ticketController']) {
                 TT.App.Controllers['ticketController'] = new Controller();
             }
 
             return TT.App.Controllers['ticketController'];
         };
-        
+
         return Backbone.Router.extend({
 
-            initialize: function( options ) {
+            initialize: function (options) {
                 console.log('Initialize router');
-                
-            },
 
+            },
 
             /* Backbone routes hash */
             routes: {
                 '': 'openTicket',
                 'ticket/open?sourceApplication=:sourceApplication': 'openTicket',
+                'ticket/add?sourceApplication=:sourceApplication': 'openTicket',
                 'ticket/view/:ticketId?sourceApplication=:sourceApplication': 'viewTicket',
                 'ticket/edit/:ticketId?sourceApplication=:sourceApplication': 'editTicket',
                 'ticket/list?sourceApplication=:sourceApplication': 'listTickets',
-                '*ticket':  'defaultRoute'
+                '*ticket': 'defaultRoute'
             },
 
-            before: function( route, params ) {
+            before: function () {
                 console.log('before route');
                 //TT.App.Communicator.mediator.trigger('message:hideError');
             },
 
-            after: function( route, params ) {
+            after: function () {
                 console.log('after route');
             },
 
-            defaultRoute: function (params) {
+            defaultRoute: function () {
                 console.log('Default ticket route');
-                TT.App.Communicator.mediator.trigger('message:showError', 'Error' ,'No source application name given.');
+                TT.App.Communicator.mediator.trigger('message:showError', 'Error', 'No source application name given.');
             },
-            
-            openTicket: function (params) {
+
+            openTicket: function () {
                 console.log('Open ticket');
                 getController.apply(this).displayTicketOpen();
             },
@@ -64,9 +64,9 @@ define([
                 getController.apply(this).displayTicketEdit(ticketId);
             },
 
-            listTickets: function (params) {
+            listTickets: function () {
                 console.log('Ticket list');
-                
+
                 getController.apply(this).displayTicketList();
             }
 

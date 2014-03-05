@@ -1,41 +1,98 @@
-<div class="container">
+<div class="container view-container">
     <div class="row">
-        <div class="span6">
-            <p>IMSI : {{imsi}}</p>
-            <p>PHONE NUMBER : {{msisdn}}</p>
+        <div class="col-md-2">
+            IMSI :
         </div>
-        <div class="span6">
-            <p>CUSTOMER NAME : {{customerName}}</p>
-            <p>PLAN : {{plan}}</p>
+        <div class="col-md-4">
+            {{imsi}}&nbsp;
         </div>
-        <div class="span6">
-            <p>BUSINESS NAME : {{businessName}}</p>
-            <p>AVGBILL : {{avgBill}}</p>
+
+        <div class="col-md-2">
+            CUSTOMER NAME :
         </div>
-        <div class="span6">
-            <p>TYPE : {{type}}</p>
-            <p>TARIFF : {{tariff}}</p>
+        <div class="col-md-4">
+            {{customerName}}&nbsp;
         </div>
-        <div class="span12">
-            <p>ISSUE TIME PERIOD : FROM {{startTime}} TO {{endTime}}</p>
+        <div class="col-md-2">
+            PHONE NUMBER :
+        </div>
+        <div class="col-md-4">
+            {{msisdn}}&nbsp;
+        </div>
+        <div class="col-md-2">
+            PLAN :
+        </div>
+        <div class="col-md-4">
+            {{plan}}&nbsp;
+        </div>
+        <div class="col-md-2">
+            BUSINESS NAME :
+        </div>
+        <div class="col-md-4">
+            {{businessName}}&nbsp;
+        </div>
+        <div class="col-md-2">
+            AVGBILL :
+        </div>
+        <div class="col-md-4">
+            {{avgBill}}&nbsp;
+        </div>
+        <div class="col-md-2">
+            TYPE :
+        </div>
+        <div class="col-md-4">
+            {{type}}&nbsp;
+        </div>
+        <div class="col-md-2">
+            TARIFF :
+        </div>
+        <div class="col-md-4">
+            {{tariff}}&nbsp;
         </div>
     </div>
 
-    <form id="ticketOpen">
-        <p>
-            <label for="title">Title</label>
-            <input id="title" value="{{title}}" name="title" />
-        </p>
+    <hr/>
 
-        <p>
-            <label for="location">Location</label>
-            <input id="location" value="http://example.com" name="location" />
-        </p>
-        <p>
-            <label for="description">Description</label>
-            <textarea id="description" value="{{description}}" name="description">http://www.example.com</textarea>
-        </p>
-        <a href="#" id="cancel">Cancel</a>
-        <input type="submit" id="submit-open" value="Done" />
+    <form id="ticketOpen">
+        <div class="row">
+
+            <div class="col-md-2">ISSUE TIME PERIOD :</div>
+            <div class="col-md-10">FROM {{startTime}} TO {{endTime}}</div>
+
+
+            <div class="col-md-2">ISSUE TITLE :</div>
+            <div class="col-md-10"><input class="width-100-percent" id="title" value="{{title}}" name="title"/></div>
+
+            <div class="col-md-2">LOCATION :</div>
+            <div class="col-md-10"><input class="width-100-percent" id="location" value="{{location}}" name="location"/>
+            </div>
+
+            <div class="col-md-2">STATUS :</div>
+            <div class="col-md-10">
+                <select id="status" class="width-100-percent">
+                    <option value="open">Open</option>
+                    <option value="pending">Pending</option>
+                    <option value="solved">Solved</option>
+                </select>
+            </div>
+
+            <div class="col-md-2">DESCRIPTION :</div>
+            <div class="col-md-10">
+                <textarea class="width-100-percent" id="description" value="{{description}}"
+                          name="description"/>
+            </div>
+        </div>
+        <hr/>
+
+        <div class="row button-row">
+            <div class="col-md-9"></div>
+
+            <div class="col-md-3">
+                <a class="secondary-btn" href="#ticket/list?sourceApplication=cqm">Cancel</a>
+                <input type="submit" id="submit-open" class="primary-btn" value="Done"/>
+            </div>
+        </div>
+
     </form>
+
 </div>
