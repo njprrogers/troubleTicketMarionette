@@ -46,7 +46,7 @@
         "time-grunt": "~0.1.1",
         "phantomjs": "~1.9",
         "grunt-karma" : "latest",
-        "karma": "~0.10.4",
+        "karma": "~0.12.0",
         "karma-junit-reporter": "~0.1",
         "karma-jasmine": "~0.1.3",
         "karma-ng-scenario": "~0.1",
